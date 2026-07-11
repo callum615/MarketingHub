@@ -1,0 +1,15 @@
+## Session start
+At the beginning of every session, run `/startup` before other work.
+If a client or project is named, pass it as an argument, e.g. `/startup marketing` or `/startup client:smith`.
+
+## Session end
+Before ending a productive session, run `/wrap-up`.
+If scope is clear, pass it: `/wrap-up marketing` or `/wrap-up client:smith`.
+Use `/wrap-up dry-run` to preview what would be saved.
+Do not skip wrap-up when decisions, deliverables, or open loops were created.
+
+## Memory rules
+- Durable agent memory lives in Supabase (not Notion pages).
+- Notion is for human-facing docs, CRM, and collaboration.
+- Local `memory/` files are a fallback and dual-write target.
+- `/startup` reads memory; `/wrap-up` writes it. Both are required for compounding.
