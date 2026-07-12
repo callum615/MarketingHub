@@ -148,13 +148,16 @@ Session note format:
 - ...
 ```
 
-**C. Git signal (optional, only if repo is clean enough and user uses GitHub backup)**
+**C. Git backup (commit + push memory files)**
 
-If git repo exists and memory files changed:
+If git repo exists and memory files changed (skip entirely on `dry-run`):
 
-- Show `git status -sb` for memory paths
-- Do **not** commit unless user asks
-- Suggest commit message: `memory: wrap-up <project_key> <date>`
+1. Stage **only** memory paths (`memory/`) — never bundle unrelated working-tree changes
+2. Commit with message: `memory: wrap-up <project_key> <date>`
+3. `git push` to origin
+4. If other non-memory changes from this session are uncommitted, mention them in the receipt but leave them alone unless the user asks
+
+If commit or push fails (auth, network, conflicts), report the error in the receipt and continue — local + Supabase writes still count as saved.
 
 ### 5) Output format (always)
 
@@ -164,8 +167,9 @@ Return a **Wrap-up Receipt** using `references/wrapup-receipt-template.md`:
 2. **Saved** — counts by type (sessions, decisions, insights, artifacts, preferences, workstreams)
 3. **Open loops carried forward**
 4. **Write targets** — `supabase | local | both | none` + paths/IDs if known
-5. **Dry run?** — yes/no
-6. **Next session hint** — one line the next `/startup` should prioritise
+5. **Git** — pushed commit hash, or why commit/push was skipped/failed
+6. **Dry run?** — yes/no
+7. **Next session hint** — one line the next `/startup` should prioritise
 
 Keep the receipt short.
 
@@ -182,6 +186,7 @@ Keep the receipt short.
 |---|---|
 | No Supabase credentials | Local write only; report gap |
 | Supabase write fails | Keep local write; show error summary |
+| Git commit/push fails | Report in receipt; memory writes still count as saved |
 | Nothing durable to save | Say so; optional minimal session log |
 | dry-run | Preview payload only; no writes |
 | Secrets in draft | Redact before any write |

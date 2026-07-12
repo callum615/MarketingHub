@@ -22,7 +22,7 @@
 ## Write targets
 - supabase: success | failed | skipped
 - local paths:
-- git: suggested commit only | skipped
+- git: pushed <commit hash> | commit failed | push failed | skipped (dry-run / no memory changes)
 
 ## Next session hint
 - 
