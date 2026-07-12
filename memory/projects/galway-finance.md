@@ -1,5 +1,8 @@
 # Project — galway-finance
 
+## 2026-07-12 (evening) — GA4 key events + wrap-up git backup
+GA4 property 541904526 now has `booking_cta_click` + `phone_click` as key events (ONCE_PER_SESSION) — closes the "no lead key event" gap at intent level; completed bookings still need a `generate_lead` tagging event. wrap-up skill now auto-commits + pushes `memory/` to origin at every session end.
+
 ## 2026-07-12 — Marketing OS built (Phases 0–3 complete)
 Full stack now running: context docs (`.agents/product-marketing.md`, `.agents/content-strategy.md`) → 4 custom skills (meta-ad-review, meta-report, wp-publish, weekly-marketing-report) → Notion Content Library pipeline (12 posts queued, weekly cadence) → scheduled Monday 8am Perth report routine (`trig_01BvHrpCDxk9otssrUNMG34d`). Week-1 post staged as WP draft 50.
 
