@@ -12,8 +12,9 @@ This file is checked by marketing skills (`ads`, `ad-creative`, `copywriting`, `
 - Aggregator: Purple Circle
 - Status: Corporate Credit Representative
 - Australian Credit Licence (ACL) held by aggregator/licensee: **486112**
-- Credit Representative number: **579222**
-- Standard disclosure line to include on ads/pages quoting rates or credit products: "Credit provided subject to lender approval and eligibility criteria. Galway Finance (Credit Representative 579222) is a credit representative of ACL 486112."
+- Corporate Credit Representative number (Galway Finance Pty Ltd, ABN 34 697 469 551): **579221** — use for content published by the business (website, ads, social)
+- Individual Credit Representative number (Callum Duffy): **579222** — use for content in Callum's personal name
+- Standard disclosure line to include on ads/pages quoting rates or credit products: "Credit provided subject to lender approval and eligibility criteria. Galway Finance Pty Ltd ABN 34 697 469 551 (Credit Representative Number 579221) is a credit representative of Purple Circle Financial Services Pty Ltd ABN 21 611 305 170, Australian Credit Licence 486112."
 
 ## Core regulatory constraints
 
