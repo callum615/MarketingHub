@@ -13,7 +13,7 @@ One page, one minute to read, one clear "do this next week." Combines paid (Meta
 2. **GA4** (property `541904526`, timezone Australia/Perth): `run_google_analytics_report` with two `dateRanges` (`7daysAgo→today` named `this_week`, `14daysAgo→8daysAgo` named `last_week`) — the comparison comes back in one call. Two pulls:
    - by `sessionDefaultChannelGroup`: sessions, activeUsers, keyEvents
    - by `pagePath` (this week only, ordered by screenPageViews, limit 10): what people actually read
-3. Editorial calendar (Notion data source `703a45b1-1b1e-4698-90b2-b5aa97e09b54`): what shipped this week, what's queued next.
+3. Editorial calendar: the Content Library database on the Marketing Hub page (Notion data source `40dcbf2b-102f-4efc-837e-86f426e6fe03`), filtered to `Format = Blog`: what shipped this week, what's queued next (Stage: Idea = queued, Editing = staged in WP awaiting review).
 
 ## Known measurement quirks (state them, don't hide them)
 
@@ -36,7 +36,7 @@ Table: this week vs last week.
 Sessions + users by channel, WoW. Top pages. Anything notable (a post ranking, a channel moving).
 
 ## Content
-Shipped this week (from editorial calendar) · next week's queued post · pipeline health (any post stuck in Awaiting review > 7 days).
+Shipped this week (from the Content Library) · next week's queued post · pipeline health (any blog post stuck in Editing > 7 days).
 
 ## Signals & risks
 Fatigue flags, measurement gaps, compliance items awaiting sign-off.

@@ -2,7 +2,7 @@
 
 *Agreed 2026-07-12. Cadence: 1 post/week, drafted via Claude Code, staged as WP drafts by `wp-publish`, published by Callum after review.*
 
-**Editorial calendar (source of truth):** Notion — "Galway Finance — Editorial Calendar" (data source `703a45b1-1b1e-4698-90b2-b5aa97e09b54`). Status flow: Queued → Drafting → Awaiting review → Staged in WP → Published.
+**Editorial calendar (source of truth):** Notion — the **Content Library** database on the Marketing Hub page (Galway Finance Hub teamspace), data source `40dcbf2b-102f-4efc-837e-86f426e6fe03`. Blog posts are the rows with `Format = Blog` / `Channel = Website`; social content lives in the same database. Blog fields: Pillar (blog pillar options), Target keyword, Buyer stage, Publish date, Live URL, Notes. Stage flow for blog posts: Idea (queued) → Drafting → Editing (= staged in WP awaiting Callum's review; Live URL set) → Published.
 
 ## Pillars
 

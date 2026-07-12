@@ -47,7 +47,7 @@ For changes to an EXISTING page, use the block-level `page-sections.*` / `post-s
 ## Step 4 — Close the loop
 
 - Report: title, slug, word count, compliance result ("passes working checklist; Purple Circle sign-off applies"), schema type used, preview link.
-- If an editorial calendar exists in Notion, update the post's status there (draft staged → awaiting review).
+- Update the post's row in the Notion Content Library (data source `40dcbf2b-102f-4efc-837e-86f426e6fe03`): Stage → "Editing", set Live URL to the post's future permalink, and note the WP post ID in Notes. When Callum publishes, the row moves to "Published".
 
 ## Rules
 
