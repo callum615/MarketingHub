@@ -1,5 +1,13 @@
 # Project — galway-finance
 
+## 2026-07-12 (night) — Serviceability campaign launched, replaced New Homes campaign
+New Meta campaign live: `META_Leads_Broad-Perth_Serviceability-LP_2026-07` (id `120251395173300248`), A$20/day, ACTIVE, targeting the lender-serviceability angle for new-home buyers. Landing page published: `/new-home-borrowing-power/` (WP page 53). Old "New Homes Campaign" (A$25/day) paused. 5 ad variants built in a "circle hybrid" creative style (previous campaign's navy+circle-photo signature, modernized typography) — stored as reusable HTML/CSS cards in the Galway Finance Design System (`claude.ai/design`, project `63603262-f698-4cbb-88c9-9164ce140eb6`, "Ads" group), rendered via headless Chrome, not Canva.
+
+Key settled decisions:
+- **Special ad category**: use `FINANCIAL_PRODUCTS_SERVICES`, not `CREDIT` (Meta retired CREDIT)
+- **Ad creative build tool**: Claude Design (HTML/CSS cards) preferred over Canva going forward — pixel-exact, brand-token-driven, reusable
+- **Landing pages must be published (not draft) before ads referencing them go live** — Meta disapproves ads linking to unpublished drafts
+
 ## 2026-07-12 (evening) — GA4 key events + wrap-up git backup
 GA4 property 541904526 now has `booking_cta_click` + `phone_click` as key events (ONCE_PER_SESSION) — closes the "no lead key event" gap at intent level; completed bookings still need a `generate_lead` tagging event. wrap-up skill now auto-commits + pushes `memory/` to origin at every session end.
 
