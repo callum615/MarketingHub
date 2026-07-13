@@ -1,5 +1,15 @@
 # Project — galway-finance
 
+## 2026-07-13 (night) — Retargeting layer built (PAUSED, awaiting activation)
+Full retargeting stack built for warm serviceability traffic: separate ABO campaign `META_Leads_RTG-Perth_Serviceability-LP_2026-07` (id `120251420896860248`, A$5/day, PAUSED), account's first 3 custom audiences (site visitors 90d `120251421421940248`, FB engagers 365d `120251420871500248`, booked-exclusion 180d `120251421422810248`), 2 new warm-angle circle-hybrid ads (V6 reminder, V7 next-step) in Meta review. Cold campaign day-1 was strong: CTR 3.8%, CPC A$1.02, 10 link clicks on A$24.40.
+
+Key settled decisions:
+- **Retargeting structure**: separate small ABO campaign, never an ad set inside the live CBO campaign (budget starvation); report warm CPL separately from cold CPL
+- **Retargeting targeting hygiene**: always disable `targeting_relaxation_types` (Meta enables custom-audience expansion silently)
+- **Warm audiences get dedicated creative** (reminder/objection angles), not recycled cold ads
+
+Gotchas learned: WEBSITE custom audiences need the extra `web_custom_audience_tos` (only grantable via Ads Manager Create-Audience UI); Pipeboard free plan has a weekly command cap that blocks mid-workflow. Flag open: live campaign's special ad category reads empty via API — verify/fix.
+
 ## 2026-07-12 (night) — Serviceability campaign launched, replaced New Homes campaign
 New Meta campaign live: `META_Leads_Broad-Perth_Serviceability-LP_2026-07` (id `120251395173300248`), A$20/day, ACTIVE, targeting the lender-serviceability angle for new-home buyers. Landing page published: `/new-home-borrowing-power/` (WP page 53). Old "New Homes Campaign" (A$25/day) paused. 5 ad variants built in a "circle hybrid" creative style (previous campaign's navy+circle-photo signature, modernized typography) — stored as reusable HTML/CSS cards in the Galway Finance Design System (`claude.ai/design`, project `63603262-f698-4cbb-88c9-9164ce140eb6`, "Ads" group), rendered via headless Chrome, not Canva.
 
