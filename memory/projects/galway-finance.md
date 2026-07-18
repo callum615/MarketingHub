@@ -1,5 +1,12 @@
 # Project — galway-finance
 
+## 2026-07-18 (afternoon) — Weekly-report cron fixed, ad-hoc Meta check surfaces zero-lead streak
+Root-caused the weekly-marketing-report "double-fire": the RemoteTrigger cron config (`trig_01BvHrpCDxk9otssrUNMG34d`, Monday 00:00 UTC = 8am Perth) was correct all along — the extra fires were Callum's own manual test runs via the trigger's `run` action, which log identically to real cron fires. Added an idempotency guard to `.claude/skills/weekly-marketing-report/SKILL.md` (checks Notion for the target week's page before touching Meta/GA4; exits immediately if found). Agreed Callum will use the `meta-report` skill ad-hoc (terminal-only, no Notion write) instead of firing the trigger manually going forward. Ran `meta-report` live and found a critical zero-lead streak: no leads or conversions of any kind for 5 days (~$119.66 spent) across the live serviceability duplicate campaigns.
+
+Key settled decisions:
+- **On-demand figures**: always use `meta-report` ad-hoc, never manually fire the weekly-marketing-report trigger
+- **special_ad_category vs optimization_goal**: the former is a targeting/compliance restriction only; the latter (Instant Form / `LEAD_GENERATION`) is the likelier cause of zero tracked conversions — check Meta Events Manager for pixel firing as the concrete next diagnostic step
+
 ## 2026-07-13 (night) — Retargeting layer built (PAUSED, awaiting activation)
 Full retargeting stack built for warm serviceability traffic: separate ABO campaign `META_Leads_RTG-Perth_Serviceability-LP_2026-07` (id `120251420896860248`, A$5/day, PAUSED), account's first 3 custom audiences (site visitors 90d `120251421421940248`, FB engagers 365d `120251420871500248`, booked-exclusion 180d `120251421422810248`), 2 new warm-angle circle-hybrid ads (V6 reminder, V7 next-step) in Meta review. Cold campaign day-1 was strong: CTR 3.8%, CPC A$1.02, 10 link clicks on A$24.40.
 
