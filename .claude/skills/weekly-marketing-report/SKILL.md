@@ -7,6 +7,15 @@ description: Produce the weekly Galway Finance marketing report combining Meta A
 
 One page, one minute to read, one clear "do this next week." Combines paid (Meta) and site (GA4) into a single picture. Data pulls are read-only; the only write is the Notion report page.
 
+## Before pulling any data (idempotency guard)
+
+This routine has fired more than once in the same week before (manual test runs during development are indistinguishable from a real cron fire, since both log to `session_logs` the same way). Extra fires that redo full Meta/GA4 pulls burn Pipeboard's free-tier weekly quota for no reason — that's what caused the Jul 14 2026 outage where both connectors hit their limit mid-week.
+
+1. Compute the target week: the 7 days Monday–Sunday ending on the most recently completed Sunday, Perth time.
+2. Search Notion for a page titled `Marketing Week — [Mon D] to [Sun D Mon YYYY]` for that exact week, under the Marketing Hub page.
+3. If that page already exists: **do not call Meta or GA4 at all.** Log a one-line `session_logs` row (objective unchanged, summary noting "page already exists for this week, no data pulled, no action taken") and stop.
+4. Only proceed to the Data pulls section below if no page exists yet for the completed week.
+
 ## Data pulls
 
 1. **Meta**: follow the `meta-report` skill's Step 1–2 (account `act_1928354054506891`, `last_7d` daily breakdown + prior-7d comparison, lead-counting and fatigue rules apply as written there).
