@@ -1,5 +1,17 @@
 # Project — galway-finance
 
+## 2026-07-19 (evening) — Full Meta audit; both campaigns rebuilt to Instant Form leads
+Full 7-ad audit (compliance/creative/policy + performance + structure) resolved the zero-lead mystery: the website `Lead` pixel event died at the Jul 15 landing-page relaunch while both ad sets optimized toward it, AND every ad carried an Instant Form the optimization ignored — Meta had no valid signal either way. Worse, Meta's Advantage+ `text_optimizations` had auto-generated 6 non-compliant V5 copy variants ("best deal", disclosure line dropped) — a live compliance FAIL. Executed with Callum's approval: paused V5 → clean creative rebuild (single body, LEARN_MORE, `disable_all_enhancements`) → converted BOTH campaigns to Instant Form optimization via archive-old-ad-set + create-new (Meta locks attribution/optimization post-creation, and CBO requires one goal per campaign). New ad sets: cold `120251560593780248` (5 ads, A$15/day), RTG `120251560809090248` (2 clean ads, warm audiences, geo now Alkimos 50km per Callum, A$5/day). All 7 ads in Meta review as of session end; learning restarts from zero — judge after 5–7 days.
+
+Key settled decisions:
+- **Lead path = Instant Form** (form `2234033924078396`) on both campaigns — softer leads, database-building, calling practice; replaces website-conversion optimization entirely
+- **Advantage+ enhancements always OFF** on regulated creatives (`disable_all_enhancements`) — text_optimizations produced non-compliant variants
+- **Retargeting geo = Alkimos 50km** (matches broad campaign; geo only, warm audiences kept)
+
+Gotchas learned: Meta locks `attribution_spec`/`optimization_goal` after ad-set creation (subcodes 1885560/1504040); lowest-cost CBO forces one optimization goal across ad sets (1885760) → archive old ad set first; LEAD_GENERATION requires 1d-click/0-view attribution; audit `asset_feed_spec` for hidden AI copy variants; event-based audiences stall when their source pixel event dies.
+
+Still on Callum: special ad category (both campaigns, Ads Manager), pixel event fix (Events Manager/GTM), Instant Form question/notification review.
+
 ## 2026-07-18 (afternoon) — Weekly-report cron fixed, ad-hoc Meta check surfaces zero-lead streak
 Root-caused the weekly-marketing-report "double-fire": the RemoteTrigger cron config (`trig_01BvHrpCDxk9otssrUNMG34d`, Monday 00:00 UTC = 8am Perth) was correct all along — the extra fires were Callum's own manual test runs via the trigger's `run` action, which log identically to real cron fires. Added an idempotency guard to `.claude/skills/weekly-marketing-report/SKILL.md` (checks Notion for the target week's page before touching Meta/GA4; exits immediately if found). Agreed Callum will use the `meta-report` skill ad-hoc (terminal-only, no Notion write) instead of firing the trigger manually going forward. Ran `meta-report` live and found a critical zero-lead streak: no leads or conversions of any kind for 5 days (~$119.66 spent) across the live serviceability duplicate campaigns.
 

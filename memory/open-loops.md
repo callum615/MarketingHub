@@ -1,29 +1,35 @@
 # Open loops — galway-finance
 
-*Updated 2026-07-18 (weekly-report fix + ad-hoc Meta check session)*
+*Updated 2026-07-19 (Meta audit + Instant Form rebuild session)*
 
 ## Meta ads
-1. **Zero-lead streak (critical)** — no lead or website conversion of any kind since Jul 13 (5 days, ~$119.66 spent) across the cold + retargeting duplicate campaigns. Owner: Callum.
-2. **Verify Events Manager / pixel firing** — the serviceability landing page has 11 views but zero downstream conversion events on the cold duplicate; check whether the conversion pixel event is configured/firing at all — this is the more likely zero-lead cause, more so than the special_ad_category gap. Owner: Callum.
-3. **Cold duplicate special ad category** — campaign `META_Leads_Broad-Perth_Serviceability-LP_2026-07 – Copy` (120251478141370248) is missing `special_ad_categories` (needs `FINANCIAL_PRODUCTS_SERVICES`); can't be added via API post-creation, must be set in Ads Manager. This is a targeting/compliance risk, not the tracking fix. Owner: Callum.
-4. **Cold duplicate Instant Form setup** — `optimization_goal` is still `OFFSITE_CONVERSIONS`, not `LEAD_GENERATION`; the objective change to true on-Facebook Instant Form leads is incomplete. Owner: Callum (doing this himself).
-5. **Watch cold duplicate CTR** — recovering (0.43% → 0.57% → 0.97% Jul 16–18) but still below the original's 4.35% baseline; geo (Alkimos, 50km) was a deliberate northern-suburbs choice, not a bug. Owner: Callum.
-6. **WCA booked-exclusion audience** — still too small (`delivery_status` 300) to attach to retargeting ad set 120251478599480248; recheck in a few weeks as bookings accumulate. Owner: agent.
+1. **Special ad category (both campaigns)** — set `FINANCIAL_PRODUCTS_SERVICES` on cold `120251478141370248` AND retargeting `120251478599460248` in Ads Manager (API can't set post-creation). After applying, recheck the new ad sets' targeting — Meta may reset some of it. Owner: Callum.
+2. **Fix Lead/CompleteRegistration pixel events** on the site — no longer blocks lead optimization (both campaigns now Instant Form), but blocks: booked-exclusion audience growth, retargeting hygiene, GA4 lead visibility. Check Events Manager Test Events on `/new-home-borrowing-power/` + GTM trigger URL scope (event fired under old campaign, 0 times since Jul 15 relaunch). Owner: Callum.
+3. **Instant Form review** — check form `2234033924078396` questions, privacy policy link, completion message; confirm lead notifications (Leads Center/email) reach Callum for fast follow-up calls. Owner: Callum.
+4. **Verify 7 new ads clear Meta review** (~24h from Jul 19 evening): cold ad set `120251560593780248` (V1–V5), RTG ad set `120251560809090248` (V6–V7 clean). Owner: agent (next session check).
+5. **Judge delivery only after 5–7 days** — both ad sets restarted learning from zero Jul 19. Don't over-read early numbers. Owner: agent.
+6. **Booked-exclusion audience** `120251421422810248` still too small (code 300) — built on CompleteRegistration, can't grow until #2 is fixed. Recheck after pixel fix. Owner: agent.
 
 ## Weekly report
-7. **Confirm the idempotency guard holds** — `.claude/skills/weekly-marketing-report/SKILL.md` now checks Notion for an existing week's page before touching Meta/GA4 (added 2026-07-18); watch Jul 20 to confirm it fires exactly once and behaves correctly.
+7. **Confirm the idempotency guard holds** — watch the Jul 20 scheduled run fires exactly once and behaves correctly.
 
 ## Content
-8. **Draft week-2 post** — "Construction Loans in WA: How Progress Payments Actually Work", due ~Jul 20, not yet started. Owner: agent.
-9. **Post the FB organic update** — Canva creative ("Couple Engaged Over Kitchen Table Work", further edited by Callum) + "$100,000 apart" caption are ready; Callum to publish to Facebook. Owner: Callum.
+8. **Week-2 blog post** — "Construction Loans in WA: How Progress Payments Actually Work", due ~Jul 20, still not started. Owner: agent. (Note: V3 Construction is the ad-delivery workhorse — post + ad angle reinforce each other.)
+9. **FB organic post** — "$100,000 apart" creative + caption ready; Callum to publish. Owner: Callum.
+
+## Skills/docs hygiene
+10. **meta-ad-review SKILL.md stale** — still says HOUSING/CREDIT special ad category; settled decision is FINANCIAL_PRODUCTS_SERVICES. One-line fix. Owner: agent, on explicit ask (non-memory file).
 
 ## Carried forward (unchanged)
-10. **generate_lead tagging** — GA4 still blind to completed bookings; add `generate_lead` on booking confirmation via GTM/WordPress. Owner: agent, needs Callum's go-ahead on approach.
-11. **Purple Circle sign-off** on `.claude/AU-finance-compliance.md`. Owner: Callum.
-12. **Privacy policy check** — confirm galwayfinance.com.au privacy policy covers Meta pixel remarketing (compliance doc §6). Owner: Callum.
-13. **product-marketing.md gaps** — metrics, verbatim customer language, named competitors; fill as campaigns surface answers.
-14. **Optional cleanup** — 4 orphaned unbranded Canva creative objects in the Meta library. Low priority.
+11. **generate_lead GA4 tagging** on booking confirmation — related to #2; needs Callum's go-ahead on approach.
+12. **Purple Circle sign-off** on `.claude/AU-finance-compliance.md`. Owner: Callum.
+13. **Privacy policy check** — Meta pixel remarketing coverage. Owner: Callum.
+14. **product-marketing.md gaps** — metrics, verbatim customer language, named competitors.
+15. **Optional cleanup** — 4 orphaned unbranded Canva creative objects in the Meta library. Low priority.
 
 ## Resolved this session
-- ~~Weekly report "double-fire"~~ — root-caused as Callum's own manual RemoteTrigger test runs (not a scheduler bug); the trigger's cron config was already correct. Fixed by adding an idempotency guard to the skill and agreeing to use `meta-report` ad-hoc for on-demand figures instead of manually firing the trigger.
-- ~~Diagnose zero-lead cause~~ — clarified special_ad_category (targeting/compliance) vs optimization_goal/Instant Form (tracking) as distinct mechanisms; pointed at Events Manager/pixel firing as the next concrete check (see Meta ads #2).
+- ~~Zero-lead streak root cause~~ — dead website Lead event + optimization/destination mismatch; fixed by converting both campaigns to Instant Form (LEAD_GENERATION/ON_AD).
+- ~~V5 compliance FAIL~~ — Meta text_optimizations auto-variants ("best deal", dropped disclosure) killed via clean single-body creative rebuild.
+- ~~Cold duplicate Instant Form setup~~ — done properly via new ad set `120251560593780248` (old one archived).
+- ~~Retargeting Perth-40km geo~~ — aligned to Alkimos 50km per Callum (warm audiences kept).
+- ~~Weak SEE_DETAILS CTA~~ — LEARN_MORE on rebuilt V5/V6/V7 creatives (V1–V4 keep SEE_DETAILS by scope choice).
