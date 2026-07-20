@@ -1,8 +1,10 @@
 # Open loops — galway-finance
 
-*Updated 2026-07-19 (late evening — Meta ad review + budget bump session)*
+*Updated 2026-07-20 (afternoon — ad-hoc meta-report check)*
 
 ## Meta ads
+0. **RTG Instant Form ad set delivery check** — `120251560809090248` (ads V6/V7) shows 0 impressions ~16hrs post-creation despite ACTIVE status. Check Ads Manager for a review hold/delivery block. **Due Jul 21** (before the Jul 24-26 checkpoint). Owner: Callum/agent.
+0b. **Reconcile cold campaign daily_budget** — live API reads $21.00/day on `120251478141370248`, but the 2026-07-19 session logged $20.00/day. Low priority, not yet investigated. Owner: agent.
 1. **Special ad category (both campaigns)** — set `FINANCIAL_PRODUCTS_SERVICES` on cold `120251478141370248` AND retargeting `120251478599460248` in Ads Manager (API can't set post-creation). Live-reconfirmed still unset this session. After applying, recheck the new ad sets' targeting — Meta may reset some of it. Owner: Callum.
 2. **Fix Lead/CompleteRegistration pixel events** on the site — no longer blocks lead optimization (both campaigns now Instant Form), but blocks: booked-exclusion audience growth, retargeting hygiene, GA4 lead visibility. Check Events Manager Test Events on `/new-home-borrowing-power/` + GTM trigger URL scope (event fired under old campaign, 0 times since Jul 15 relaunch). Owner: Callum.
 3. **Instant Form review** — check form `2234033924078396` questions, privacy policy link, completion message; confirm lead notifications (Leads Center/email) reach Callum for fast follow-up calls. Owner: Callum.
@@ -14,7 +16,7 @@
 7. **Confirm the idempotency guard holds** — watch the Jul 20 scheduled run fires exactly once and behaves correctly.
 
 ## Content
-8. **Week-2 blog post** — "Construction Loans in WA: How Progress Payments Actually Work", due ~Jul 20, still not started. Owner: agent. (Note: V3 Construction is the ad-delivery workhorse — post + ad angle reinforce each other.)
+8. **Week-2 blog post** — "Construction Loans in WA: How Progress Payments Actually Work", due Jul 20 (today) — now overdue, still not started. Owner: agent. (Note: V3 Construction is the ad-delivery workhorse — post + ad angle reinforce each other.)
 9. **FB organic post** — "$100,000 apart" creative + caption ready; Callum to publish. Owner: Callum.
 
 ## Skills/docs hygiene
