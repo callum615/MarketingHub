@@ -1,6 +1,21 @@
 # Open loops — galway-finance
 
-*Updated 2026-07-20 (afternoon — ad-hoc meta-report check)*
+*Updated 2026-07-21 (afternoon — referral network plan + Notion tracker)*
+
+## Referral network (accountants, financial planners, building reps)
+Tracked task-by-task in Notion Marketing Hub → "Referral Network Plan — Progress" database. Summary of due dates (full detail in Notion):
+16. Jul 22 — List and rank existing loose contacts by type/warmth. Owner: Callum.
+17. Jul 23 — Confirm referral-relationship structure with Purple Circle (reciprocal only, no fees tied to loan value/volume). Owner: Callum.
+18. Jul 23 — Draft the standard "what's in it for you" one-liner for partners. Owner: Callum.
+19. Jul 25 — Build target prospect list (5-8 per type) across Perth metro. Owner: Callum.
+20. Jul 25 — Create the partner one-pager (reuse product-marketing differentiators). Owner: Agent.
+21. Jul 28 — Re-engage existing loose contacts (reconnect + coffee ask). Owner: Callum.
+22. Aug 1 — Scope a local networking group (BNI/chamber) as a force-multiplier. Owner: Callum.
+23. Aug 4 — Begin warm-intro/cold outreach to new targets. Owner: Callum.
+24. Aug 11 — Give-first referrals to new partners. Owner: Callum.
+25. Aug 18 — Set recurring touch cadence per active partner. Owner: Callum.
+26. Aug 21 — Monthly review of referrals in/out and conversion by partner type. Owner: Agent.
+27. Aug 21 — Fold this workstream into the project log/open-loops as an ongoing entry. Owner: Agent.
 
 ## Meta ads
 0. **RTG Instant Form ad set delivery check** — `120251560809090248` (ads V6/V7) shows 0 impressions ~16hrs post-creation despite ACTIVE status. Check Ads Manager for a review hold/delivery block. **Due Jul 21** (before the Jul 24-26 checkpoint). Owner: Callum/agent.

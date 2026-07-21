@@ -1,5 +1,15 @@
 # Project — galway-finance
 
+## 2026-07-21 (afternoon) — Referral network plan + Notion progress tracker built
+New workstream: in-person marketing via a professional referral network with accountants, financial planners, and building reps. Planned in plan mode (5 phases: compliance check → foundation → outreach → relationship-building → systemize/review), governed by the AU conflicted-remuneration ban — no referral fees tied to loan value/volume, reciprocal referrals + shared value only, Purple Circle sign-off on the exact structure still an open item. Geography set to wider Perth metro (not restricted to the ad campaign's Alkimos/northern-corridor focus); time budget 3-5 hrs/week. Neither the existing `referrals` nor `co-marketing` skill was a clean fit for this professional in-person use case — borrowed the compliance framing from `referrals` and partner-identification logic from `co-marketing`.
+
+Built a "Referral Network Plan — Progress" database inside the Notion Marketing Hub (12 tasks across the 5 phases, columns: Task/Phase/Status/Owner/Due Date/Notes), all tasks now due-dated Jul 22 – Aug 21, 2026. Mid-build, corrected course after first creating a partner-level CRM database — Callum wanted plan/progress tracking instead, not a contact database, so it was rebuilt as a task tracker. Also hit and fixed a Notion mechanics gotcha: a newly created database defaults `is_inline=false` and can get mis-embedded as a stray top-of-page link via partial `update_content` edits — fixed with `is_inline: true` + a full `replace_content` pass.
+
+Key settled decisions:
+- **Referral compensation model**: reciprocal referrals + shared value only, no fees tied to loan value/volume — Purple Circle confirmation still pending.
+- **Geography**: wider Perth metro for this workstream (separate decision from the ad campaign's corridor focus).
+- **Notion tracker = plan/task progress only** — no partner/contact-level fields, per explicit correction from Callum.
+
 ## 2026-07-20 (afternoon) — Ad-hoc Meta check: still zero real leads; RTG rebuild not delivering
 Ran startup (confirmed Supabase/local memory in sync) then an ad-hoc `meta-report` pull (7-day, campaign/adset/ad level, read-only, no Notion write — per the 2026-07-18 rule to use meta-report ad-hoc rather than firing the scheduled trigger). Result: $192.28 spent this week, zero real leads — the only "lead" action in the data is a stale delayed-attribution artifact on a paused, $0-spend campaign, not a new lead. The new cold Instant Form ad set (5 ads, `120251560593780248`, rebuilt Jul 19 late evening) has started delivering but on too small a sample to judge (~$25 spend, sub-1% CTR). New finding: the retargeting Instant Form ad set (`120251560809090248`, ads V6/V7) shows **zero impressions at all** since creation ~16 hours prior, despite `effective_status: ACTIVE` — not diagnosed further this session, flagged for a Jul 21 check rather than waiting for the Jul 24-26 checkpoint. Also spotted a small discrepancy: live API `daily_budget` on the cold campaign reads $21.00/day, not the $20.00/day logged in the Jul 19 budget-bump session. No changes made — purely a read-only check-in.
 
