@@ -1,12 +1,12 @@
 # Open loops — galway-finance
 
-*Updated 2026-07-20 (afternoon — ad-hoc meta-report check)*
+*Updated 2026-07-21 (analytics audit + Calendly tracking fix)*
 
 ## Meta ads
 0. **RTG Instant Form ad set delivery check** — `120251560809090248` (ads V6/V7) shows 0 impressions ~16hrs post-creation despite ACTIVE status. Check Ads Manager for a review hold/delivery block. **Due Jul 21** (before the Jul 24-26 checkpoint). Owner: Callum/agent.
 0b. **Reconcile cold campaign daily_budget** — live API reads $21.00/day on `120251478141370248`, but the 2026-07-19 session logged $20.00/day. Low priority, not yet investigated. Owner: agent.
 1. **Special ad category (both campaigns)** — set `FINANCIAL_PRODUCTS_SERVICES` on cold `120251478141370248` AND retargeting `120251478599460248` in Ads Manager (API can't set post-creation). Live-reconfirmed still unset this session. After applying, recheck the new ad sets' targeting — Meta may reset some of it. Owner: Callum.
-2. **Fix Lead/CompleteRegistration pixel events** on the site — no longer blocks lead optimization (both campaigns now Instant Form), but blocks: booked-exclusion audience growth, retargeting hygiene, GA4 lead visibility. Check Events Manager Test Events on `/new-home-borrowing-power/` + GTM trigger URL scope (event fired under old campaign, 0 times since Jul 15 relaunch). Owner: Callum.
+2. ~~Fix Lead/CompleteRegistration pixel events on the site~~ — **fixed 2026-07-21**. Root cause was never GTM (site has no classic GTM container — tracking is Site Kit's native "Google tag" `GT-WV3W733W` + a directly-embedded Meta pixel, not routed through Tag Manager). The real gap: the `/booking/` page embeds Calendly, and nothing listened for Calendly's `calendly.event_scheduled` postMessage — so no Lead/CompleteRegistration ever fired on a real booking. Added a message listener in the `page-booking` template's Custom HTML block (JavaScript tab) that fires `fbq('track','Lead')` + `gtag('event','generate_lead')` on that event. Verified live: code confirmed present on the page, and a stubbed-function test dispatch fired both calls correctly. **Still open: confirm a real Calendly booking produces the Lead event in Meta Events Manager and shows up in GA4** — the code path is proven, production has not yet been observed end-to-end. Owner: agent/Callum, next real booking.
 3. **Instant Form review** — check form `2234033924078396` questions, privacy policy link, completion message; confirm lead notifications (Leads Center/email) reach Callum for fast follow-up calls. Owner: Callum.
 4. **Define a target CPL or lead-volume goal** for the Meta campaigns — none exists in memory; strategy decisions keep being made without a number to judge against. Owner: Callum.
 5. **Jul 24–26 checkpoint** (consolidated): judge Instant Form CPL with real data; cut cold ad set `120251560593780248` down to top 2–3 performing ads; compare cold vs retargeting CPL; assess whether the Jul 19 $20/day bump is paying off. Both ad sets restarted learning from zero Jul 19 — don't over-read numbers before this. Owner: agent.
@@ -23,11 +23,16 @@
 10. **meta-ad-review SKILL.md stale** — still says HOUSING/CREDIT special ad category; settled decision is FINANCIAL_PRODUCTS_SERVICES. One-line fix. Owner: agent, on explicit ask (non-memory file).
 
 ## Carried forward (unchanged)
-11. **generate_lead GA4 tagging** on booking confirmation — related to #2; needs Callum's go-ahead on approach.
 12. **Purple Circle sign-off** on `.claude/AU-finance-compliance.md`. Owner: Callum.
 13. **Privacy policy check** — Meta pixel remarketing coverage. Owner: Callum.
 14. **product-marketing.md gaps** — metrics, verbatim customer language, named competitors.
 15. **Optional cleanup** — 4 orphaned unbranded Canva creative objects in the Meta library. Low priority.
+16. **GA4 hygiene from 2026-07-21 audit**: three phantom conversion events (`purchase`, `close_convert_lead`, `qualify_lead`) marked as conversions but have never fired — never implemented, safe to unmark. Also consider marking `calculator_cta_click`/`contact_cta_click` as key events, and adding a custom dimension for loan-type/page-category (currently zero custom dimensions defined). Low priority, hygiene only.
+
+## Resolved this session (Jul 21 — analytics audit + Calendly tracking fix)
+- ~~Dead Lead/CompleteRegistration pixel~~ — root-caused (missing Calendly `event_scheduled` listener, not a GTM issue — site has no classic GTM container) and fixed via a message-listener script added to the `page-booking` template. See #2 above for full detail and the still-open production-verification step.
+- ~~generate_lead not marked as GA4 conversion~~ — marked as a key event (ONCE_PER_EVENT) via GA4 Admin API, now that it's wired to a real trigger.
+- Full GA4 tracking audit completed — findings logged as #16 above (phantom conversions, missing custom dimensions), all low-priority hygiene.
 
 ## Resolved this session (Jul 19 late-evening check)
 - ~~Verify 7 new ads cleared Meta review~~ — confirmed all 7 ACTIVE/effective_status ACTIVE (cold V1–V5, RTG V6–V7).
