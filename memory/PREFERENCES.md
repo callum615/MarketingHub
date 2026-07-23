@@ -6,3 +6,4 @@
 - **CRN disclosure**: 579221 corporate on business-published content; 579222 individual for Callum-personal content. (2026-07-12)
 - **Licensing** (from 2026-07-11): Galway Finance Pty Ltd ABN 34 697 469 551, credit rep of Purple Circle (ACL 486112); "credit assistance" never "advice".
 - **Memory git backup**: wrap-up auto-commits `memory/` (message `memory: wrap-up <project_key> <date>`) and pushes to origin at every session end; non-memory changes are never bundled — mentioned in receipt, committed only on explicit ask. (2026-07-12)
+- **Market scope strategy**: Callum is deliberately broadening market scope beyond local Perth (e.g. the "Test - Broad Australia" Meta ad set, national targeting) alongside budget reallocation — driven by a personal interest in possibly relocating to a different area, where servicing a broader market is an advantage. Don't flag broader geographic targeting or related budget cuts as unintended drift without checking first. (2026-07-23)

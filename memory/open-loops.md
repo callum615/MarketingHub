@@ -1,15 +1,16 @@
 # Open loops — galway-finance
 
-*Updated 2026-07-21 (analytics audit + Calendly tracking fix)*
+*Updated 2026-07-23 (meta-report + creative cut)*
 
 ## Meta ads
-0. **RTG Instant Form ad set delivery check** — `120251560809090248` (ads V6/V7) shows 0 impressions ~16hrs post-creation despite ACTIVE status. Check Ads Manager for a review hold/delivery block. **Due Jul 21** (before the Jul 24-26 checkpoint). Owner: Callum/agent.
-0b. **Reconcile cold campaign daily_budget** — live API reads $21.00/day on `120251478141370248`, but the 2026-07-19 session logged $20.00/day. Low priority, not yet investigated. Owner: agent.
+-1. **RTG retargeting ad set fully dark, 4 consecutive days** — `120251560809090248` shows zero impressions/spend Jul 20-23 (escalated from the "16hrs" note on Jul 20). Needs an Ads Manager check for a review hold/delivery block today, not another wait cycle. Owner: Callum/agent. **Now the top priority.**
+0b. **Reconcile cold campaign daily_budget** — was $21.00/day (Jul 20), now confirmed intentionally cut to $15.00/day (changed 2026-07-22) to fund the new broader-Australia test ad set. Resolved as intentional, no longer a discrepancy to chase.
 1. **Special ad category (both campaigns)** — set `FINANCIAL_PRODUCTS_SERVICES` on cold `120251478141370248` AND retargeting `120251478599460248` in Ads Manager (API can't set post-creation). Live-reconfirmed still unset this session. After applying, recheck the new ad sets' targeting — Meta may reset some of it. Owner: Callum.
+1b. **Monitor new "Test - Broad Australia — Instant Form leads" ad set** (`120251618482160248`) — confirmed intentional broader-market test (Callum's lifestyle/relocation interest), not drift. Track its performance alongside the local ad set. Owner: agent.
 2. ~~Fix Lead/CompleteRegistration pixel events on the site~~ — **fixed 2026-07-21**. Root cause was never GTM (site has no classic GTM container — tracking is Site Kit's native "Google tag" `GT-WV3W733W` + a directly-embedded Meta pixel, not routed through Tag Manager). The real gap: the `/booking/` page embeds Calendly, and nothing listened for Calendly's `calendly.event_scheduled` postMessage — so no Lead/CompleteRegistration ever fired on a real booking. Added a message listener in the `page-booking` template's Custom HTML block (JavaScript tab) that fires `fbq('track','Lead')` + `gtag('event','generate_lead')` on that event. Verified live: code confirmed present on the page, and a stubbed-function test dispatch fired both calls correctly. **Still open: confirm a real Calendly booking produces the Lead event in Meta Events Manager and shows up in GA4** — the code path is proven, production has not yet been observed end-to-end. Owner: agent/Callum, next real booking.
 3. **Instant Form review** — check form `2234033924078396` questions, privacy policy link, completion message; confirm lead notifications (Leads Center/email) reach Callum for fast follow-up calls. Owner: Callum.
 4. **Define a target CPL or lead-volume goal** for the Meta campaigns — none exists in memory; strategy decisions keep being made without a number to judge against. Owner: Callum.
-5. **Jul 24–26 checkpoint** (consolidated): judge Instant Form CPL with real data; cut cold ad set `120251560593780248` down to top 2–3 performing ads; compare cold vs retargeting CPL; assess whether the Jul 19 $20/day bump is paying off. Both ad sets restarted learning from zero Jul 19 — don't over-read numbers before this. Owner: agent.
+5. **Jul 24–26 checkpoint** (consolidated): ~~cut cold ad set `120251560593780248` down to top 2-3 ads~~ — **done 2026-07-23**, V3/V5 paused, V1/V2/V4 kept live. Remaining: judge Instant Form CPL with real data once RTG delivery is restored; compare cold vs retargeting CPL; assess whether the $15/day reallocation (post broader-market pivot) is paying off. Owner: agent.
 6. **Booked-exclusion audience** `120251421422810248` still too small (code 300) — built on CompleteRegistration, can't grow until #2 is fixed. Recheck after pixel fix. Owner: agent.
 
 ## Weekly report
@@ -28,6 +29,10 @@
 14. **product-marketing.md gaps** — metrics, verbatim customer language, named competitors.
 15. **Optional cleanup** — 4 orphaned unbranded Canva creative objects in the Meta library. Low priority.
 16. **GA4 hygiene from 2026-07-21 audit**: three phantom conversion events (`purchase`, `close_convert_lead`, `qualify_lead`) marked as conversions but have never fired — never implemented, safe to unmark. Also consider marking `calculator_cta_click`/`contact_cta_click` as key events, and adding a custom dimension for loan-type/page-category (currently zero custom dimensions defined). Low priority, hygiene only.
+
+## Resolved this session (Jul 23 — meta-report + creative cut)
+- ~~Broader-Australia targeting ad set + cold budget drop to $15/day: unlogged drift or deliberate?~~ — confirmed deliberate; Callum is intentionally broadening market scope ahead of a possible relocation.
+- ~~Cold ad set creative cut (Jul 24-26 checkpoint)~~ — done early: V3 and V5 paused, V1/V2/V4 kept live.
 
 ## Resolved this session (Jul 21 — analytics audit + Calendly tracking fix)
 - ~~Dead Lead/CompleteRegistration pixel~~ — root-caused (missing Calendly `event_scheduled` listener, not a GTM issue — site has no classic GTM container) and fixed via a message-listener script added to the `page-booking` template. See #2 above for full detail and the still-open production-verification step.

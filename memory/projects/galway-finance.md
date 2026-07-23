@@ -1,5 +1,20 @@
 # Project — galway-finance
 
+## 2026-07-23 — Meta report: broader-market strategy confirmed; cold ad set creative cut executed early
+Ran an ad-hoc `meta-report`: zero real leads for 8 straight days ($206.13 spend across the window). Two new findings not yet in memory: (1) a new ad set, "Test - Broad Australia — Instant Form leads" (`120251618482160248`, 5 duplicate creatives V1-V5), running national targeting; (2) the cold campaign's daily budget had dropped from the $21.00/day read on Jul 20 to $15.00/day (changed 2026-07-22). Flagged both as needing confirmation rather than assuming drift.
+
+Callum confirmed both were deliberate: he's testing a broader-than-local market because he has a personal interest in possibly relocating to a different area, and servicing a wider market now makes that move easier later. This is a genuine strategy call, not an error — logged as a standing preference so future reports don't misflag geographic expansion.
+
+Also confirmed the RTG retargeting ad set (`120251560809090248`) has now been **fully dark for 4 consecutive days** (Jul 20-23, zero impressions/spend) — escalated from the "16hrs, maybe ramp-up" note on Jul 20. Still not diagnosed in Ads Manager — this is now the most urgent open item.
+
+Executed the Jul 24-26 checkpoint's ad-count cut early, since the data (zero clicks on V1/V3/V5, all 9 clicks on V2/V4) already supported it: paused V3 (House-and-Land Construction, ad `120251560596170248`) and V5 (Verbatim Question clean, ad `120251560597530248`) in the main "Broad Perth — Instant Form leads" ad set (`120251560593780248`). Kept V1 running deliberately per Callum's request to give it more of a chance, plus V2 and V4.
+
+Key settled decisions:
+- **Broader-Australia targeting + $15/day cold budget is intentional** — driven by Callum's lifestyle/relocation interest, not to be flagged as drift in future reports.
+- **Cold ad set cut to 3 ads (V1, V2, V4)** — V3 and V5 paused for zero clicks; checkpoint acted on early rather than waiting to Jul 24-26.
+
+Still open: RTG retargeting delivery outage (4 days dark, needs Ads Manager check), Calendly booking → Lead event still not observed end-to-end in production, Week-2 blog post (Construction Loans in WA) still not started (overdue since Jul 20).
+
 ## 2026-07-21 (morning) — Root-caused and fixed the dead Lead/CompleteRegistration pixel; full GA4 audit
 Ran a full analytics tracking audit (GA4 + Meta Pixel) at Callum's request. Found the GA4 side mostly healthy (booking_cta_click, phone_click correctly tracked) but three phantom conversion events (`purchase`, `close_convert_lead`, `qualify_lead`) that were marked as conversions but never actually implemented, and `generate_lead` firing (once, thin) but not marked as a key event. Zero custom dimensions defined — flagged as a gap for segmenting by loan type given the multi-service business.
 
