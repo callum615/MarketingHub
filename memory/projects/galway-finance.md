@@ -1,5 +1,12 @@
 # Project — galway-finance
 
+## 2026-07-24 — Meta report: RTG dark streak now 5 days, Instant Form privacy link confirmed missing
+Ran an ad-hoc `meta-report` (Jul 17-23, read-only): zero leads for a 9th consecutive day. Cross-checked this against the live Instant Form's actual submission export since Jul 15 (zero records) — the zero-lead reading is confirmed real, not a reporting/attribution gap. The RTG retargeting ad set (`120251560809090248`, ads V6/V7) is now fully dark for **5 consecutive days** (Jul 20-24) despite `effective_status: ACTIVE` — this has now failed two "wait and recheck" cycles (Jul 20 → 4 days on Jul 23 → 5 days today) and needs an actual Ads Manager diagnostic, not another observation pass.
+
+New findings this session: the live Instant Form ("Short Details-copy", `2234033924078396`) has **no `privacy_policy_url` set at all** — confirmed directly via the Meta API, closing the ambiguity on open-loop #3. Also confirmed `special_ad_category` is inconsistent across the two live campaigns: Broad-Perth = `HOUSING` (stale value), RTG-Perth = unset — neither matches the settled `FINANCIAL_PRODUCTS_SERVICES` decision from Jul 12; both need fixing manually in Ads Manager. No changes made — read-only session.
+
+Still open: RTG dark streak (now top priority, 5 days), Instant Form privacy link, special ad category fix on both campaigns, Calendly booking → Lead event still not observed end-to-end in production, Week-2 blog post still not started (overdue since Jul 20).
+
 ## 2026-07-23 — Meta report: broader-market strategy confirmed; cold ad set creative cut executed early
 Ran an ad-hoc `meta-report`: zero real leads for 8 straight days ($206.13 spend across the window). Two new findings not yet in memory: (1) a new ad set, "Test - Broad Australia — Instant Form leads" (`120251618482160248`, 5 duplicate creatives V1-V5), running national targeting; (2) the cold campaign's daily budget had dropped from the $21.00/day read on Jul 20 to $15.00/day (changed 2026-07-22). Flagged both as needing confirmation rather than assuming drift.
 
