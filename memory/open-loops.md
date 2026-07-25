@@ -1,9 +1,11 @@
 # Open loops — galway-finance
 
-*Updated 2026-07-24 (meta-report)*
+*Updated 2026-07-25 (rejected-ad copy fix + Pipeboard disconnect)*
 
 ## Meta ads
--1. **RTG retargeting ad set fully dark, 5 consecutive days** — `120251560809090248` shows zero impressions/spend Jul 20-24 (escalated again from the 4-day note on Jul 23; both ads V6/V7 still show `effective_status: ACTIVE`). Two wait-and-recheck cycles have now failed — needs an actual Ads Manager diagnostic (review hold / delivery restriction check) today. Owner: Callum/agent. **Still the top priority.**
+-2. **Push drafted ad-copy fix to disapproved ad `120251618482150248`** ("V1 Two Lenders (hero)", Test-Broad-Australia ad set) — rejected by Meta Jul 22, root cause identified as a "no credit check" policy-risk phrase plus `text_optimizations` left OPT_IN. Compliant rewrite is drafted (in the 2026-07-25 session log/chat) and ready to push via `create_ad_creative` (with `disable_all_enhancements=true`) + `update_ad` — blocked only on Meta connectivity. Owner: agent, next session. **New top priority alongside the RTG outage below.**
+-1b. **Pipeboard Meta Ads MCP disconnected** — hit the weekly free-plan AI tool execution cap on 2026-07-25, then came back fully disconnected after a relink attempt (not just rate-limited). No fallback Meta connector exists in this environment. Needs reconnecting properly; a Pro upgrade may be needed since this cap has now blocked work twice (Jul 13, Jul 25). Owner: Callum.
+-1. **RTG retargeting ad set fully dark, 5+ consecutive days** — `120251560809090248` shows zero impressions/spend Jul 20-24 (escalated again from the 4-day note on Jul 23; both ads V6/V7 still show `effective_status: ACTIVE`). Two wait-and-recheck cycles have now failed — needs an actual Ads Manager diagnostic (review hold / delivery restriction check). Owner: Callum/agent.
 -0. **Instant Form missing privacy policy link** — live form "Short Details-copy" (`2234033924078396`) has an empty `privacy_policy_url`, confirmed directly via API on 2026-07-24 (previously only suspected under open loop #3 below). Quick compliance fix. Owner: Callum.
 0b. **Reconcile cold campaign daily_budget** — was $21.00/day (Jul 20), now confirmed intentionally cut to $15.00/day (changed 2026-07-22) to fund the new broader-Australia test ad set. Resolved as intentional, no longer a discrepancy to chase.
 1. **Special ad category (both campaigns)** — set `FINANCIAL_PRODUCTS_SERVICES` on cold `120251478141370248` (currently `HOUSING`, a stale value) AND retargeting `120251478599460248` (currently unset) in Ads Manager (API can't set post-creation). Confirmed live via API on 2026-07-24. After applying, recheck the new ad sets' targeting — Meta may reset some of it. Owner: Callum.

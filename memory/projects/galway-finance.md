@@ -1,5 +1,12 @@
 # Project — galway-finance
 
+## 2026-07-25 — Rejected ad root-caused and rewritten; Pipeboard Meta Ads MCP disconnected mid-push
+Traced the DISAPPROVED ad from the Jul 24 report to `120251618482150248` ("V1 Two Lenders (hero)", Test-Broad-Australia ad set) — rejected by Meta on Jul 22, while its 4 sibling ads in the same duplicated ad set cleared review fine. Root cause: the creative's body copy contained "no credit check from an enquiry," a known Meta financial-services ad policy trigger phrase, and the creative had `text_optimizations` OPT_IN, against the Jul 19 standing rule (Advantage+ enhancements always OFF on regulated creatives). Drafted a compliant rewrite — dropped the "no credit check" claim, and fixed a hyper-local claim ("Perth northern-suburbs brokerage based in Eglinton") that didn't match this ad set's national test targeting.
+
+Attempted to push the fix via Pipeboard Meta Ads (new creative with `disable_all_enhancements=true`, then swap onto the ad) but hit Pipeboard's weekly free-plan execution cap on the first dry-run call. A relink attempt made things worse — the MCP came back fully disconnected rather than reconnected. Confirmed no separate native Meta Graph API connector exists in this environment; Pipeboard is the only bridge. **The copy fix was never pushed to Meta.**
+
+Key insight: Pipeboard's free-plan weekly cap has now blocked work twice (Jul 13, Jul 25) — a recurring operational risk, not a one-off. Next session: reconnect Pipeboard (or confirm Pro upgrade), then push the drafted copy to the disapproved ad.
+
 ## 2026-07-24 — Meta report: RTG dark streak now 5 days, Instant Form privacy link confirmed missing
 Ran an ad-hoc `meta-report` (Jul 17-23, read-only): zero leads for a 9th consecutive day. Cross-checked this against the live Instant Form's actual submission export since Jul 15 (zero records) — the zero-lead reading is confirmed real, not a reporting/attribution gap. The RTG retargeting ad set (`120251560809090248`, ads V6/V7) is now fully dark for **5 consecutive days** (Jul 20-24) despite `effective_status: ACTIVE` — this has now failed two "wait and recheck" cycles (Jul 20 → 4 days on Jul 23 → 5 days today) and needs an actual Ads Manager diagnostic, not another observation pass.
 
