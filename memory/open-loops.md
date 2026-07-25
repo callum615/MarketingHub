@@ -3,8 +3,7 @@
 *Updated 2026-07-25 (rejected-ad copy fix + Pipeboard disconnect)*
 
 ## Meta ads
--2. **Push drafted ad-copy fix to disapproved ad `120251618482150248`** ("V1 Two Lenders (hero)", Test-Broad-Australia ad set) — rejected by Meta Jul 22, root cause identified as a "no credit check" policy-risk phrase plus `text_optimizations` left OPT_IN. Compliant rewrite is drafted (in the 2026-07-25 session log/chat) and ready to push via `create_ad_creative` (with `disable_all_enhancements=true`) + `update_ad` — blocked only on Meta connectivity. Owner: agent, next session. **New top priority alongside the RTG outage below.**
--1b. **Pipeboard Meta Ads MCP disconnected** — hit the weekly free-plan AI tool execution cap on 2026-07-25, then came back fully disconnected after a relink attempt (not just rate-limited). No fallback Meta connector exists in this environment. Needs reconnecting properly; a Pro upgrade may be needed since this cap has now blocked work twice (Jul 13, Jul 25). Owner: Callum.
+-2. **Push drafted ad-copy fix to disapproved ad `120251618482150248`** ("V1 Two Lenders (hero)", Test-Broad-Australia ad set) — rejected by Meta Jul 22, root cause identified as a "no credit check" policy-risk phrase plus `text_optimizations` left OPT_IN. Compliant rewrite is drafted (in the 2026-07-25 session log/chat) and ready to push via the native Meta connector's `ads_create_creative` (with `disable_all_enhancements`/`self_ai_disclosure` set correctly) + `ads_update_entity` — no longer blocked on connectivity (see resolved item below). Owner: agent, next session. **New top priority alongside the RTG outage below.**
 -1. **RTG retargeting ad set fully dark, 5+ consecutive days** — `120251560809090248` shows zero impressions/spend Jul 20-24 (escalated again from the 4-day note on Jul 23; both ads V6/V7 still show `effective_status: ACTIVE`). Two wait-and-recheck cycles have now failed — needs an actual Ads Manager diagnostic (review hold / delivery restriction check). Owner: Callum/agent.
 -0. **Instant Form missing privacy policy link** — live form "Short Details-copy" (`2234033924078396`) has an empty `privacy_policy_url`, confirmed directly via API on 2026-07-24 (previously only suspected under open loop #3 below). Quick compliance fix. Owner: Callum.
 0b. **Reconcile cold campaign daily_budget** — was $21.00/day (Jul 20), now confirmed intentionally cut to $15.00/day (changed 2026-07-22) to fund the new broader-Australia test ad set. Resolved as intentional, no longer a discrepancy to chase.
@@ -32,6 +31,10 @@
 14. **product-marketing.md gaps** — metrics, verbatim customer language, named competitors.
 15. **Optional cleanup** — 4 orphaned unbranded Canva creative objects in the Meta library. Low priority.
 16. **GA4 hygiene from 2026-07-21 audit**: three phantom conversion events (`purchase`, `close_convert_lead`, `qualify_lead`) marked as conversions but have never fired — never implemented, safe to unmark. Also consider marking `calculator_cta_click`/`contact_cta_click` as key events, and adding a custom dimension for loan-type/page-category (currently zero custom dimensions defined). Low priority, hygiene only.
+
+## Resolved this session (Jul 25 continued — Pipeboard decommissioned)
+- ~~Pipeboard Meta Ads MCP disconnected / weekly cap risk~~ — moot. Callum removed Pipeboard as a vendor entirely; Meta access is now via the native `mcp__claude_ai_Meta__*` connector, direct to Meta, no third-party plan cap. Confirmed working: ad account `1928354054506891` ("Galway Finance") is ACTIVE and queryable.
+- ~~"No fallback Meta connector exists in this environment"~~ — superseded; the native Meta connector is now the primary (only) connector going forward.
 
 ## Resolved this session (Jul 23 — meta-report + creative cut)
 - ~~Broader-Australia targeting ad set + cold budget drop to $15/day: unlogged drift or deliberate?~~ — confirmed deliberate; Callum is intentionally broadening market scope ahead of a possible relocation.

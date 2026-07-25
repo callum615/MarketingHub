@@ -1,5 +1,8 @@
 # Project — galway-finance
 
+## 2026-07-25 (continued) — Pipeboard decommissioned, native Meta connector confirmed live
+Callum removed Pipeboard as a vendor entirely (not a temporary reconnect) — Galway Finance now has a direct Meta connector (`mcp__claude_ai_Meta__*`) with no third-party plan or execution cap. Verified via `ads_get_ad_accounts`: ad account `1928354054506891` ("Galway Finance") is ACTIVE and queryable. This resolves the recurring Pipeboard weekly-cap risk (Jul 13, Jul 25) and unblocks the drafted ad-copy fix for `120251618482150248`. Going forward, use the native Meta connector for all ad operations; Pipeboard tool names/workflows in older session logs are stale.
+
 ## 2026-07-25 — Rejected ad root-caused and rewritten; Pipeboard Meta Ads MCP disconnected mid-push
 Traced the DISAPPROVED ad from the Jul 24 report to `120251618482150248` ("V1 Two Lenders (hero)", Test-Broad-Australia ad set) — rejected by Meta on Jul 22, while its 4 sibling ads in the same duplicated ad set cleared review fine. Root cause: the creative's body copy contained "no credit check from an enquiry," a known Meta financial-services ad policy trigger phrase, and the creative had `text_optimizations` OPT_IN, against the Jul 19 standing rule (Advantage+ enhancements always OFF on regulated creatives). Drafted a compliant rewrite — dropped the "no credit check" claim, and fixed a hyper-local claim ("Perth northern-suburbs brokerage based in Eglinton") that didn't match this ad set's national test targeting.
 
