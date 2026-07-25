@@ -1,48 +1,56 @@
 # Open loops — galway-finance
 
-*Updated 2026-07-21 (analytics audit + Calendly tracking fix)*
+*Updated 2026-07-25 (afternoon) — meta report, campaign-pivot advice, ad creative redesign. This worktree's local memory was 4 days stale before this update; reconstructed from Supabase, which is source of truth.*
 
-## Meta ads
-0. **RTG Instant Form ad set delivery check** — `120251560809090248` (ads V6/V7) shows 0 impressions ~16hrs post-creation despite ACTIVE status. Check Ads Manager for a review hold/delivery block. **Due Jul 21** (before the Jul 24-26 checkpoint). Owner: Callum/agent.
-0b. **Reconcile cold campaign daily_budget** — live API reads $21.00/day on `120251478141370248`, but the 2026-07-19 session logged $20.00/day. Low priority, not yet investigated. Owner: agent.
-1. **Special ad category (both campaigns)** — set `FINANCIAL_PRODUCTS_SERVICES` on cold `120251478141370248` AND retargeting `120251478599460248` in Ads Manager (API can't set post-creation). Live-reconfirmed still unset this session. After applying, recheck the new ad sets' targeting — Meta may reset some of it. Owner: Callum.
-2. ~~Fix Lead/CompleteRegistration pixel events on the site~~ — **fixed 2026-07-21**. Root cause was never GTM (site has no classic GTM container — tracking is Site Kit's native "Google tag" `GT-WV3W733W` + a directly-embedded Meta pixel, not routed through Tag Manager). The real gap: the `/booking/` page embeds Calendly, and nothing listened for Calendly's `calendly.event_scheduled` postMessage — so no Lead/CompleteRegistration ever fired on a real booking. Added a message listener in the `page-booking` template's Custom HTML block (JavaScript tab) that fires `fbq('track','Lead')` + `gtag('event','generate_lead')` on that event. Verified live: code confirmed present on the page, and a stubbed-function test dispatch fired both calls correctly. **Still open: confirm a real Calendly booking produces the Lead event in Meta Events Manager and shows up in GA4** — the code path is proven, production has not yet been observed end-to-end. Owner: agent/Callum, next real booking.
-3. **Instant Form review** — check form `2234033924078396` questions, privacy policy link, completion message; confirm lead notifications (Leads Center/email) reach Callum for fast follow-up calls. Owner: Callum.
-4. **Define a target CPL or lead-volume goal** for the Meta campaigns — none exists in memory; strategy decisions keep being made without a number to judge against. Owner: Callum.
-5. **Jul 24–26 checkpoint** (consolidated): judge Instant Form CPL with real data; cut cold ad set `120251560593780248` down to top 2–3 performing ads; compare cold vs retargeting CPL; assess whether the Jul 19 $20/day bump is paying off. Both ad sets restarted learning from zero Jul 19 — don't over-read numbers before this. Owner: agent.
-6. **Booked-exclusion audience** `120251421422810248` still too small (code 300) — built on CompleteRegistration, can't grow until #2 is fixed. Recheck after pixel fix. Owner: agent.
+## Meta ads — needs Callum confirmation
+0. **RTG retargeting campaign is now fully CAMPAIGN_PAUSED** (`120251478599460248`) — previously logged as "ACTIVE but dark 5+ days," now paused at the campaign level. Confirm this was intentional; if not, it's most of the account's warm-audience reach gone quiet. Owner: Callum.
+0b. **Test-Broad-Australia ad set is now fully ADSET_PAUSED** (all ads except the still-disapproved V1) — confirm intentional. Owner: Callum.
+
+## Meta ads — in progress
+1. **Push drafted compliant ad-copy rewrite to disapproved ad** `120251618482150248` (V1 Two Lenders hero, Test-Broad-Australia) via the native Meta connector (`ads_create_creative` + `ads_update_entity`). Copy is ready (removed the "no credit check" trigger phrase, fixed a hyper-local claim). Was blocked by Pipeboard's execution cap; native connector is now live and unblocked. Owner: agent.
+2. **Instant Form UX audit** — nobody has reviewed the live form's (`2234033924078396`) actual question flow, friction, or completion message since the Jul19 Instant Form rebuild. Do this before concluding the zero-lead streak is a pure demand problem. Owner: agent.
+3. **Instant Form missing `privacy_policy_url`** — confirmed empty via API. Compliance gap (not believed to block submissions technically, but still needs fixing). Owner: Callum/agent.
+4. **special_ad_category mismatch** — both live campaigns still don't match the settled `FINANCIAL_PRODUCTS_SERVICES` (currently HOUSING / unset). API can't set post-creation — Ads Manager only. Owner: Callum.
+5. **Define a target CPL or lead-volume goal** for the Meta campaigns — still no number in memory to judge go/no-go decisions against. Owner: Callum.
+6. **Zero-lead streak** — now 10+ consecutive days across all campaigns despite Instant Form conversion (since the Jul19 rebuild). $170.28 spent this week (Jul19-25) alone. Treat as a stop-and-diagnose moment (form UX audit, not another wait cycle) before considering a full campaign pivot — account has been restructured 4+ times in 2 weeks, so "concept doesn't work" isn't a clean read yet. Owner: agent/Callum.
+7. **ads_get_errors tool broken** in this environment — resolver error on every entity ID tried. Use `effective_status`/`delivery` substatus from `ads_get_ad_entities` instead until fixed. Owner: agent (workaround only, not a real fix).
+
+## Ad creative refresh (Claude Design) — new workstream
+8. **Source real photography** — no image-gen API (Flux/Gemini/Ideogram) configured in this environment; Canva MCP can't produce standalone photos. Either add an API key or supply photos manually. Direction settled: property/lifestyle only, no people/faces. Owner: Callum.
+9. **Push redesigned ad images into live Meta ads** — 5 of 7 cards in the Galway Finance Design System (Ads group) were rewritten to a graphic-only ring/typography treatment (no photo) this session; still needs `ads_creative_upload_image` + `ads_create_creative`/`ads_update_entity` to actually go live. Owner: agent, once photography direction above is resolved (or ship graphic-only versions as-is).
+10. **Optional cleanup** — 3 now-unused stock photos (`fhb-entrance.jpg`, `house-dusk.jpg`, `quote-pathway.jpg`) still in the design system, left in place for comparison. Low priority.
 
 ## Weekly report
-7. **Confirm the idempotency guard holds** — watch the Jul 20 scheduled run fires exactly once and behaves correctly.
+11. **Confirm the idempotency guard holds** — watch scheduled runs fire exactly once and behave correctly.
 
 ## Content
-8. **Week-2 blog post** — "Construction Loans in WA: How Progress Payments Actually Work", due Jul 20 (today) — now overdue, still not started. Owner: agent. (Note: V3 Construction is the ad-delivery workhorse — post + ad angle reinforce each other.)
-9. **FB organic post** — "$100,000 apart" creative + caption ready; Callum to publish. Owner: Callum.
+12. **Week-2 blog post** — "Construction Loans in WA: How Progress Payments Actually Work", due Jul20 — still overdue, still not started. Owner: agent. (V3 Construction is the ad-delivery workhorse — post + ad angle reinforce each other, though V3 is currently paused.)
+13. **FB organic post** — "$100,000 apart" creative + caption ready; Callum to publish. Owner: Callum.
 
 ## Skills/docs hygiene
-10. **meta-ad-review SKILL.md stale** — still says HOUSING/CREDIT special ad category; settled decision is FINANCIAL_PRODUCTS_SERVICES. One-line fix. Owner: agent, on explicit ask (non-memory file).
+14. **meta-ad-review SKILL.md stale** — still says HOUSING/CREDIT special ad category; settled decision is FINANCIAL_PRODUCTS_SERVICES. One-line fix. Owner: agent, on explicit ask.
+
+## Referral network (Jul21 plan, largely untouched since)
+15. Rank existing loose contacts by type/warmth (was due Jul22)
+16. Confirm referral-relationship structure with Purple Circle (reciprocal only, no fees tied to loan value/volume) (was due Jul23)
+17. Draft the standard "what's in it for you" one-liner for partners (was due Jul23)
+18. Build target prospect list (5-8 per type) across Perth metro (was due Jul25)
+19. Create the partner one-pager (was due Jul25)
+20. Full 12-task plan tracked in Notion "Referral Network Plan - Progress" (Marketing Hub) — check there for current status, this list may be stale.
 
 ## Carried forward (unchanged)
-12. **Purple Circle sign-off** on `.claude/AU-finance-compliance.md`. Owner: Callum.
-13. **Privacy policy check** — Meta pixel remarketing coverage. Owner: Callum.
-14. **product-marketing.md gaps** — metrics, verbatim customer language, named competitors.
-15. **Optional cleanup** — 4 orphaned unbranded Canva creative objects in the Meta library. Low priority.
-16. **GA4 hygiene from 2026-07-21 audit**: three phantom conversion events (`purchase`, `close_convert_lead`, `qualify_lead`) marked as conversions but have never fired — never implemented, safe to unmark. Also consider marking `calculator_cta_click`/`contact_cta_click` as key events, and adding a custom dimension for loan-type/page-category (currently zero custom dimensions defined). Low priority, hygiene only.
+21. **Purple Circle sign-off** on `.claude/AU-finance-compliance.md`. Owner: Callum.
+22. **Privacy policy check** — Meta pixel remarketing coverage. Owner: Callum.
+23. **product-marketing.md gaps** — metrics, verbatim customer language, named competitors.
+24. **GA4 hygiene from 2026-07-21 audit**: three phantom conversion events (`purchase`, `close_convert_lead`, `qualify_lead`) marked as conversions but never fired — safe to unmark. Consider marking `calculator_cta_click`/`contact_cta_click` as key events, add a custom dimension for loan-type/page-category. Low priority.
+25. **Confirm a real Calendly booking produces the Lead event end-to-end** in Meta Events Manager + GA4 — the Jul21 tracking fix's code path is proven but production has not been observed yet.
 
-## Resolved this session (Jul 21 — analytics audit + Calendly tracking fix)
-- ~~Dead Lead/CompleteRegistration pixel~~ — root-caused (missing Calendly `event_scheduled` listener, not a GTM issue — site has no classic GTM container) and fixed via a message-listener script added to the `page-booking` template. See #2 above for full detail and the still-open production-verification step.
-- ~~generate_lead not marked as GA4 conversion~~ — marked as a key event (ONCE_PER_EVENT) via GA4 Admin API, now that it's wired to a real trigger.
-- Full GA4 tracking audit completed — findings logged as #16 above (phantom conversions, missing custom dimensions), all low-priority hygiene.
+## Resolved this session (Jul25 afternoon)
+- ~~Redesign ad creative visuals to remove photo dependency~~ — 5 of 7 Meta ad cards rewritten in Claude Design; graphic-only ring/typography treatment, copy preserved.
+- ~~Diagnose whether a campaign pivot is warranted~~ — advised against it for now; recommended Instant Form UX audit + letting the account stabilize first.
 
-## Resolved this session (Jul 19 late-evening check)
-- ~~Verify 7 new ads cleared Meta review~~ — confirmed all 7 ACTIVE/effective_status ACTIVE (cold V1–V5, RTG V6–V7).
-- ~~Reduce ads vs increase budget decision~~ — decided both, sequenced: cold budget $15→$20/day now (executed live), ad-count cut deferred to Jul 24–26 checkpoint with real data.
-- ~~Kill retargeting to fund cold bump?~~ — decided no; retargeting kept at $5/day (see project log for rationale).
-- ~~Local vs national targeting~~ — decided stay local (Alkimos 50km / northern corridor); rationale in project log.
-
-## Resolved this session
-- ~~Zero-lead streak root cause~~ — dead website Lead event + optimization/destination mismatch; fixed by converting both campaigns to Instant Form (LEAD_GENERATION/ON_AD).
-- ~~V5 compliance FAIL~~ — Meta text_optimizations auto-variants ("best deal", dropped disclosure) killed via clean single-body creative rebuild.
-- ~~Cold duplicate Instant Form setup~~ — done properly via new ad set `120251560593780248` (old one archived).
-- ~~Retargeting Perth-40km geo~~ — aligned to Alkimos 50km per Callum (warm audiences kept).
-- ~~Weak SEE_DETAILS CTA~~ — LEARN_MORE on rebuilt V5/V6/V7 creatives (V1–V4 keep SEE_DETAILS by scope choice).
+## Resolved earlier (Jul23-25, reconstructed from Supabase)
+- ~~Reconnect Meta Ads access after Pipeboard cap/disconnect~~ — Pipeboard fully decommissioned; native `mcp__claude_ai_Meta__*` connector confirmed live 2026-07-25.
+- ~~Root-cause the disapproved ad~~ — "no credit check" trigger phrase + text_optimizations OPT_IN; compliant rewrite drafted 2026-07-25 (push still pending, see #1 above).
+- ~~Confirm broader-Australia targeting + budget cut were intentional~~ — confirmed 2026-07-23, tied to Callum's possible relocation.
+- ~~Execute Jul24-26 checkpoint ad-count cut~~ — done early, 2026-07-23 (V3/V5 paused, V1/V2/V4 kept active).
