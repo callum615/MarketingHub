@@ -1,6 +1,6 @@
 # Open loops — galway-finance
 
-*Updated 2026-07-26 (early hours) — ad creative aligned to Meta Ad Templates system + stock photos sourced. This worktree's local memory was 4 days stale as of 2026-07-25; reconstructed from Supabase, which is source of truth.*
+*Updated 2026-07-26 (morning) — Meta push confirmed manual-only (Instant Form limitation), 7 ads exported, Notion page created. This worktree's local memory was 4 days stale as of 2026-07-25; reconstructed from Supabase, which is source of truth.*
 
 ## Meta ads — needs Callum confirmation
 0. **RTG retargeting campaign is now fully CAMPAIGN_PAUSED** (`120251478599460248`) — previously logged as "ACTIVE but dark 5+ days," now paused at the campaign level. Confirm this was intentional; if not, it's most of the account's warm-audience reach gone quiet. Owner: Callum.
@@ -17,10 +17,12 @@
 
 ## Ad creative refresh (Claude Design)
 8. ~~Source real photography~~ — **done 2026-07-26**. No image-gen API available, but the `<image-slot>` component (drag-and-drop in the Claude Design canvas) solved it without one. V2 and V6 now have real Pexels stock photos (same photographer/shoot) set via `src`/`credit`.
-9. **Push the aligned ad designs into live Meta ads** — all 7 ads in the "Galway Finance — Meta Ads" project (https://claude.ai/design/p/0efb615c-c7bd-4450-b0c5-2257eeec3fd4) are finished: aligned to the existing Meta Ad Templates visual system, copy verbatim, photos in place. Needs `ads_creative_upload_image` + `ads_create_creative`/`ads_update_entity` to go live. Owner: agent, on Callum's go-ahead.
+9. **Manual Ads Manager creative swap needed to push new images live** — confirmed 2026-07-26 there is no safe API path (ad creatives immutable, no Instant Form param on `ads_create_creative`). Callum must duplicate each ad, replace the image, keep everything else identical, publish paused for review: V1 `120251560594890248`, V2 `120251560595390248`, V3 `120251560596170248`, V4 `120251560596630248`, V5 `120251560597530248`, RTG V6 `120251560810320248`, RTG V7 `120251560811000248`. Owner: Callum.
+9b. **Get the 7 exported PNGs into Notion** — files ready at `/tmp/meta_ads_final/` (1080×1350, full-res). Notion page created: [Meta Ad Creative — Aligned Set (2026-07-26)](https://www.notion.so/Meta-Ad-Creative-Aligned-Set-2026-07-26-3a9c844e9c4381a5a20cfbf3f2871f4c). Callum to drag the 7 files into the "Images" section manually (automated upload proved impractical — see insight below). Owner: Callum. Note: files are in system temp, not durable — re-export from Claude Design if lost before this is done.
+9c. **Build 1:1 square and 9:16 Stories/Reels versions** of all 7 ads — confirmed wanted, can proceed anytime now that the Meta push is manual (no longer blocking sequencing). Owner: agent.
 10. **Cleanup — superseded ring-motif ad cards** — the first-pass redesign in the base Galway Finance Design System's `ads/` folder (meta-hero.card.html etc.) is now superseded by the aligned versions in "Galway Finance — Meta Ads". Low priority: remove or archive. Owner: agent, on explicit ask.
 11. **Stock photo tone tradeoff** — V2/V6 house reads more upscale/architect-designed than a typical client's home; Callum accepted this consciously over geographically-mismatched modest alternatives. Revisit only if it becomes a real concern once ads are live.
-10. **Optional cleanup** — 3 now-unused stock photos (`fhb-entrance.jpg`, `house-dusk.jpg`, `quote-pathway.jpg`) still in the design system, left in place for comparison. Low priority.
+12. **Optional cleanup** — 3 now-unused stock photos (`fhb-entrance.jpg`, `house-dusk.jpg`, `quote-pathway.jpg`) still in the design system, left in place for comparison. Low priority.
 
 ## Weekly report
 11. **Confirm the idempotency guard holds** — watch scheduled runs fire exactly once and behave correctly.
