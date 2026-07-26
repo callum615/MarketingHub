@@ -1,5 +1,17 @@
 # Project — galway-finance
 
+## 2026-07-26 (early hours) — Ad creative aligned to existing Meta Ad Templates system, stock photos sourced
+Continuing the same session: after building a first-pass "Galway Finance — Meta Ads" Claude Design project (7 ads, ring-motif style), Callum pointed out an existing, richer template system already in use — "Meta Ad Templates.dc.html" in the "Social media ad templates" project (`e5106aea-b312-446d-b2b9-49175d1de155`) — with its own established palette (#0D1356 midnight / #181E87 royal / #A3A9F8 periwinkle), Outfit/Poppins type, and named layout patterns (bold statement, qualifying question, stat hero, photo+plate, lead magnet story, split link, carousel). Rebuilt all 7 ads to match this system, mapping each to the best-fit pattern and preserving every headline/support copy string verbatim — only the visual treatment changed. Adopted the `<image-slot>` web component the reference system already uses for photos, which turned out to solve the "no image-gen API" gap from earlier in the session cleanly: it's a real drag-and-drop placeholder in the Claude Design canvas, no API needed.
+
+For the two photo ads (V2 First Home Buyers, RTG V6 Reminder), sourced stock photography manually via web search (no `search_stock_photos` tool or stock API configured) — went through several rounds: an upscale architect-designed home (strong quality, matched pair, but reads posh), then modest/ordinary suburban houses that were clearly North-American in style (vinyl siding, shutters, autumn maples — wrong for a Perth WA audience). Presented the tradeoff explicitly; Callum chose the upscale matched pair (same photographer/shoot, via Pexels) over the geographically-mismatched modest options. Set both via the image-slot `src`/`credit` attributes and verified render.
+
+Key settled decisions:
+- **Meta ad visual system of record**: "Meta Ad Templates.dc.html" (Social media ad templates project) — not the base design system's ring-motif ads/ folder, now superseded
+- **Photo placeholders**: `<image-slot>` drag-and-drop, not an image-gen API
+- **V2/V6 photo tone**: upscale/architect-designed accepted over modest-but-mismatched alternatives
+
+Gotchas learned: Pixabay returns 403 to WebFetch (not usable for sourcing this way); Pexels stock skews heavily North-American for "ordinary suburban house" content — polished/luxury architecture shots are more geographically generic and easier to source matching sets from than modest ones.
+
 *Note: this worktree's local memory was 4 days stale as of 2026-07-25 (last entry was 07-21) — the entries below for 07-23 through 07-25 were reconstructed from Supabase, which had stayed current via a sibling worktree. Supabase remains the source of truth; treat this file as a mirror.*
 
 ## 2026-07-25 (afternoon) — Meta report, campaign-pivot question, ad creative redesign

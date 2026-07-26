@@ -1,6 +1,6 @@
 # Open loops — galway-finance
 
-*Updated 2026-07-25 (afternoon) — meta report, campaign-pivot advice, ad creative redesign. This worktree's local memory was 4 days stale before this update; reconstructed from Supabase, which is source of truth.*
+*Updated 2026-07-26 (early hours) — ad creative aligned to Meta Ad Templates system + stock photos sourced. This worktree's local memory was 4 days stale as of 2026-07-25; reconstructed from Supabase, which is source of truth.*
 
 ## Meta ads — needs Callum confirmation
 0. **RTG retargeting campaign is now fully CAMPAIGN_PAUSED** (`120251478599460248`) — previously logged as "ACTIVE but dark 5+ days," now paused at the campaign level. Confirm this was intentional; if not, it's most of the account's warm-audience reach gone quiet. Owner: Callum.
@@ -15,9 +15,11 @@
 6. **Zero-lead streak** — now 10+ consecutive days across all campaigns despite Instant Form conversion (since the Jul19 rebuild). $170.28 spent this week (Jul19-25) alone. Treat as a stop-and-diagnose moment (form UX audit, not another wait cycle) before considering a full campaign pivot — account has been restructured 4+ times in 2 weeks, so "concept doesn't work" isn't a clean read yet. Owner: agent/Callum.
 7. **ads_get_errors tool broken** in this environment — resolver error on every entity ID tried. Use `effective_status`/`delivery` substatus from `ads_get_ad_entities` instead until fixed. Owner: agent (workaround only, not a real fix).
 
-## Ad creative refresh (Claude Design) — new workstream
-8. **Source real photography** — no image-gen API (Flux/Gemini/Ideogram) configured in this environment; Canva MCP can't produce standalone photos. Either add an API key or supply photos manually. Direction settled: property/lifestyle only, no people/faces. Owner: Callum.
-9. **Push redesigned ad images into live Meta ads** — 5 of 7 cards in the Galway Finance Design System (Ads group) were rewritten to a graphic-only ring/typography treatment (no photo) this session; still needs `ads_creative_upload_image` + `ads_create_creative`/`ads_update_entity` to actually go live. Owner: agent, once photography direction above is resolved (or ship graphic-only versions as-is).
+## Ad creative refresh (Claude Design)
+8. ~~Source real photography~~ — **done 2026-07-26**. No image-gen API available, but the `<image-slot>` component (drag-and-drop in the Claude Design canvas) solved it without one. V2 and V6 now have real Pexels stock photos (same photographer/shoot) set via `src`/`credit`.
+9. **Push the aligned ad designs into live Meta ads** — all 7 ads in the "Galway Finance — Meta Ads" project (https://claude.ai/design/p/0efb615c-c7bd-4450-b0c5-2257eeec3fd4) are finished: aligned to the existing Meta Ad Templates visual system, copy verbatim, photos in place. Needs `ads_creative_upload_image` + `ads_create_creative`/`ads_update_entity` to go live. Owner: agent, on Callum's go-ahead.
+10. **Cleanup — superseded ring-motif ad cards** — the first-pass redesign in the base Galway Finance Design System's `ads/` folder (meta-hero.card.html etc.) is now superseded by the aligned versions in "Galway Finance — Meta Ads". Low priority: remove or archive. Owner: agent, on explicit ask.
+11. **Stock photo tone tradeoff** — V2/V6 house reads more upscale/architect-designed than a typical client's home; Callum accepted this consciously over geographically-mismatched modest alternatives. Revisit only if it becomes a real concern once ads are live.
 10. **Optional cleanup** — 3 now-unused stock photos (`fhb-entrance.jpg`, `house-dusk.jpg`, `quote-pathway.jpg`) still in the design system, left in place for comparison. Low priority.
 
 ## Weekly report
