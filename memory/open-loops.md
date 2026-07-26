@@ -1,8 +1,21 @@
 # Open loops — galway-finance
 
-*Updated 2026-07-21 (analytics audit + Calendly tracking fix)*
+*Updated 2026-07-26 (referral network compliance fix) — Meta ads section below is only current as of 2026-07-21; this worktree missed 5 sessions through 2026-07-25 (see `memory/sessions/2026-07-26_1013_referral-network-compliance-fix.md` and Supabase `session_logs` for what changed since, or branch `emerald-range` for the local file trail). Treat Supabase as authoritative for Meta ads state until this file is reconciled.*
 
-## Meta ads
+## In-person referral network (new workstream, started ~2026-07-21/22)
+Full 12-task plan tracked live in Notion: "Referral Network Plan — Progress" (under Marketing Hub). As of 2026-07-26, all tasks "Not Started" except two moved to "In Progress" this session.
+0. **Get the Purple Circle referral agreement paperwork ready/in hand** — commission-split structure confirmed 2026-07-26 (not pure reciprocity); paperwork itself not yet sourced. Owner: Callum.
+1. **Review and approve the drafted one-liner + partner one-pager** — https://app.notion.com/p/3a9c844e9c4381119e22f7784ced6826. Owner: Callum.
+2. **List and rank existing loose contacts by type/warmth** — overdue since Jul 22. Owner: Callum.
+3. **Build target prospect list (5–8 per type, Perth metro)** — overdue since Jul 25. Owner: Callum.
+4. Re-engage existing loose contacts (reconnect + coffee ask) — due Jul 28. Owner: Callum.
+5. Scope a local networking group (BNI/chamber) — due Aug 1. Owner: Callum.
+6. Begin warm-intro/cold outreach to new targets — due Aug 4. Owner: Callum.
+7. Give-first referrals to new partners — due Aug 11. Owner: Callum.
+8. Set recurring touch cadence per active partner — due Aug 18. Owner: Callum.
+9. Fold workstream into this file + galway-finance.md going forward; monthly referral review — due Aug 21. Owner: Agent.
+
+## Meta ads (stale — last verified 2026-07-21, see banner above)
 0. **RTG Instant Form ad set delivery check** — `120251560809090248` (ads V6/V7) shows 0 impressions ~16hrs post-creation despite ACTIVE status. Check Ads Manager for a review hold/delivery block. **Due Jul 21** (before the Jul 24-26 checkpoint). Owner: Callum/agent.
 0b. **Reconcile cold campaign daily_budget** — live API reads $21.00/day on `120251478141370248`, but the 2026-07-19 session logged $20.00/day. Low priority, not yet investigated. Owner: agent.
 1. **Special ad category (both campaigns)** — set `FINANCIAL_PRODUCTS_SERVICES` on cold `120251478141370248` AND retargeting `120251478599460248` in Ads Manager (API can't set post-creation). Live-reconfirmed still unset this session. After applying, recheck the new ad sets' targeting — Meta may reset some of it. Owner: Callum.

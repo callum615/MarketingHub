@@ -1,5 +1,18 @@
 # Project — galway-finance
 
+## 2026-07-26 — Referral network: partner one-pager drafted, commission-structure compliance corrected
+*Note: this worktree's local memory jumps from 2026-07-21 straight to 2026-07-26 — 5 sessions (2026-07-22 through 2026-07-25, mostly Meta ads: Pipeboard decommission, native connector cutover, ad-copy disapproval, RTG/Test-Broad-Australia pauses) exist in Supabase and on branch `emerald-range` but were never merged into this branch's local files. See Supabase `session_logs` for that history.*
+
+Startup flagged the above gap. Callum asked to focus only on the in-person referral-network workstream this session. Pulled the live Notion "Referral Network Plan — Progress" tracker (built ~Jul 21/22): all 12 tasks still Not Started, several overdue. Drafted the two agent-owned deliverables — a "what's in it for you" one-liner and a partner one-pager — initially as pure reciprocity (no fees), per the existing compliance guardrail file's blanket framing. Published as a new Notion page under Marketing Hub.
+
+Callum then corrected this: referral partners will be paid via a **commission-split structure under Purple Circle's own referral agreement template**, not reciprocity. Updated `.claude/AU-finance-compliance.md` — the old "referral fees tied to loan value/volume are likely prohibited" line was too broad; an aggregator's own vetted template is the accepted compliant mechanism (Purple Circle holds the ACL and is responsible for the template's compliance), while custom/non-templated fee structures still need explicit compliance review. Rewrote the one-pager/one-liner to pitch a formal paid partnership, deliberately leaving the specific commission split out of the marketing copy (that's a contract term, not a pitch line).
+
+Key settled decisions:
+- **Referral commission structure**: commission split under Purple Circle's template, paid on settlement — not reciprocity, not a DIY structure.
+- **Collateral never states the split %** — that lives in the signed agreement only.
+
+Still open: Callum needs to get the actual Purple Circle agreement paperwork, approve the copy, list/rank contacts (overdue Jul 22), and build the prospect list (overdue Jul 25). Full detail in `memory/open-loops.md`.
+
 ## 2026-07-21 (morning) — Root-caused and fixed the dead Lead/CompleteRegistration pixel; full GA4 audit
 Ran a full analytics tracking audit (GA4 + Meta Pixel) at Callum's request. Found the GA4 side mostly healthy (booking_cta_click, phone_click correctly tracked) but three phantom conversion events (`purchase`, `close_convert_lead`, `qualify_lead`) that were marked as conversions but never actually implemented, and `generate_lead` firing (once, thin) but not marked as a key event. Zero custom dimensions defined — flagged as a gap for segmenting by loan type given the multi-service business.
 
