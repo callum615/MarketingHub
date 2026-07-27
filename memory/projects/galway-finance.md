@@ -1,5 +1,14 @@
 # Project — galway-finance
 
+## 2026-07-27 — Referral network: target prospect list built, WA volume-builder finance-arm pattern discovered
+Focused session on in-person referral-network prospecting. Ran Local-SMB research across accountants, financial planners, and building/real-estate reps in Perth's northern corridor. Callum drove several rounds of "check if X already has a broker relationship" (Ray White, Endeavour Homes, B1 Homes, Redink Homes, Content Living, Home Group), which uncovered a real pattern worth remembering: nearly every WA volume/project home builder running a display village is vertically integrated with its own in-house or group-owned mortgage broker — ABN Group→Resolve Finance (Dale Alcock Homes, Celebration Homes), Scott Park Group→Lets Finance (B1 Homes, Redink Homes), Endeavour Homes→Central Lending Solutions — and Ray White Group owns Loan Market Group outright with an exclusive referral-from-day-one arrangement. All of these were excluded as referral targets. Callum corrected one assumption (Blueprint Homes is not ABN Group-owned); verified and reinstated it as a candidate.
+
+Final list: 11 candidates — 3 accountants (Alkimos Tax Accounting, The Accounting Collective Perth, OmegaCA), 2 financial planners (A&T Financial Advisers, Enlighten Financial Services — two other "planners" found also broker mortgages themselves and were excluded as competitors), and 5-6 real estate/building names (Northern Beaches Realty, Century 21 Gold Key Realty, Professionals Northern Coast, WOW Homes, Content Living, Blueprint Homes as unverified). Pushed into a new Notion page under Marketing Hub and the tracker task moved Not Started → In Progress.
+
+Key settled insight (not a strategic decision, a factual finding): **volume-builder display villages and large franchise real-estate groups tied to an owned brokerage are a structurally closed referral channel** — future prospecting in this space should prioritise independent/boutique builders and independent real-estate agencies instead.
+
+Still open: Callum to review/vet the prospect list before any outreach; the loose-contacts list (existing personal network) was scoped but not started — needs Callum to supply names live. Full detail in `memory/open-loops.md`.
+
 ## 2026-07-26 — Referral network: partner one-pager drafted, commission-structure compliance corrected
 *Note: this worktree's local memory jumps from 2026-07-21 straight to 2026-07-26 — 5 sessions (2026-07-22 through 2026-07-25, mostly Meta ads: Pipeboard decommission, native connector cutover, ad-copy disapproval, RTG/Test-Broad-Australia pauses) exist in Supabase and on branch `emerald-range` but were never merged into this branch's local files. See Supabase `session_logs` for that history.*
 

@@ -1,13 +1,13 @@
 # Open loops — galway-finance
 
-*Updated 2026-07-26 (referral network compliance fix) — Meta ads section below is only current as of 2026-07-21; this worktree missed 5 sessions through 2026-07-25 (see `memory/sessions/2026-07-26_1013_referral-network-compliance-fix.md` and Supabase `session_logs` for what changed since, or branch `emerald-range` for the local file trail). Treat Supabase as authoritative for Meta ads state until this file is reconciled.*
+*Updated 2026-07-27 (referral network prospect list + builder-finance-arm check) — Meta ads section below is only current as of 2026-07-21; this worktree missed 5 sessions through 2026-07-25 (see `memory/sessions/2026-07-26_1013_referral-network-compliance-fix.md` and Supabase `session_logs` for what changed since, or branch `emerald-range` for the local file trail). Treat Supabase as authoritative for Meta ads state until this file is reconciled.*
 
 ## In-person referral network (new workstream, started ~2026-07-21/22)
-Full 12-task plan tracked live in Notion: "Referral Network Plan — Progress" (under Marketing Hub). As of 2026-07-26, all tasks "Not Started" except two moved to "In Progress" this session.
+Full 12-task plan tracked live in Notion: "Referral Network Plan — Progress" (under Marketing Hub).
 0. **Get the Purple Circle referral agreement paperwork ready/in hand** — commission-split structure confirmed 2026-07-26 (not pure reciprocity); paperwork itself not yet sourced. Owner: Callum.
 1. **Review and approve the drafted one-liner + partner one-pager** — https://app.notion.com/p/3a9c844e9c4381119e22f7784ced6826. Owner: Callum.
-2. **List and rank existing loose contacts by type/warmth** — overdue since Jul 22. Owner: Callum.
-3. **Build target prospect list (5–8 per type, Perth metro)** — overdue since Jul 25. Owner: Callum.
+2. **List and rank existing loose contacts by type/warmth** — overdue since Jul 22; scoped this session (framework: name / type / how-you-know-them / warmth Hot-Warm-Cold) but Callum hasn't supplied names yet. Owner: Callum.
+3. **Build target prospect list (5–8 per type, Perth metro)** — research done 2026-07-27, moved to In Progress. 11 candidates (3 accountants, 2 financial planners, 5-6 real estate/building) — see https://app.notion.com/p/3aac844e9c438185b888c315a1afba8c. Callum to review/vet before outreach. Financial-planner category thin (only 2 clean names — 2 others excluded as they double as mortgage brokers/competitors); consider widening geography. Also unverified: Home Group WA finance arrangement (phone check), Professionals Northern Coast (site 403), Blueprint Homes. Owner: Callum (review) / Agent (research done).
 4. Re-engage existing loose contacts (reconnect + coffee ask) — due Jul 28. Owner: Callum.
 5. Scope a local networking group (BNI/chamber) — due Aug 1. Owner: Callum.
 6. Begin warm-intro/cold outreach to new targets — due Aug 4. Owner: Callum.
