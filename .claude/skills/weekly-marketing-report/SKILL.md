@@ -18,8 +18,8 @@ This routine has fired more than once in the same week before (manual test runs 
 
 ## Data pulls
 
-1. **Meta**: follow the `meta-report` skill's Step 1–2 (account `act_1928354054506891`, `last_7d` daily breakdown + prior-7d comparison, lead-counting and fatigue rules apply as written there).
-2. **GA4** (property `541904526`, timezone Australia/Perth): `run_google_analytics_report` with two `dateRanges` (`7daysAgo→today` named `this_week`, `14daysAgo→8daysAgo` named `last_week`) — the comparison comes back in one call. Two pulls:
+1. **Meta**: follow the `meta-report` skill's Step 1–2 (account `1928354054506891`, `last_7d` daily breakdown + prior-7d comparison via `ads_get_ad_entities`, lead-counting and fatigue rules apply as written there).
+2. **GA4** (property `541904526`, timezone Australia/Perth): as of 2026-08-09 there is no GA4/Google Analytics MCP tool connected in this environment — check first with a tool search (e.g. `ToolSearch` for "analytics"/"GA4") in case one has since been added. If none is found, do not guess numbers or reference `run_google_analytics_report` (a stale tool name from a prior setup that no longer exists) — mark the Website section as a clean data gap in the report, same as the last two scheduled runs correctly did. If a GA4 tool is found, pull two `dateRanges` (`7daysAgo→today` named `this_week`, `14daysAgo→8daysAgo` named `last_week`):
    - by `sessionDefaultChannelGroup`: sessions, activeUsers, keyEvents
    - by `pagePath` (this week only, ordered by screenPageViews, limit 10): what people actually read
 3. Editorial calendar: the Content Library database on the Marketing Hub page (Notion data source `40dcbf2b-102f-4efc-837e-86f426e6fe03`), filtered to `Format = Blog`: what shipped this week, what's queued next (Stage: Idea = queued, Editing = staged in WP awaiting review).
