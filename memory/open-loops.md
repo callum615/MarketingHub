@@ -1,9 +1,14 @@
 # Open loops — galway-finance
 
-*Updated 2026-07-26 (morning) — Meta push confirmed manual-only (Instant Form limitation), 7 ads exported, Notion page created. This worktree's local memory was 4 days stale as of 2026-07-25; reconstructed from Supabase, which is source of truth.*
+*Updated 2026-08-09 — weekly-marketing-report Meta pull fixed (was silently broken 2 weeks), Google Ads/GA4 connector (AdvisorPPC) identified but parked mid-setup. Supabase remains source of truth; this file is a mirror.*
 
-## Meta ads — needs Callum confirmation
-0. **RTG retargeting campaign is now fully CAMPAIGN_PAUSED** (`120251478599460248`) — previously logged as "ACTIVE but dark 5+ days," now paused at the campaign level. Confirm this was intentional; if not, it's most of the account's warm-audience reach gone quiet. Owner: Callum.
+## URGENT — needs Callum confirmation
+0. **Both Meta campaigns are now fully PAUSED account-wide** (confirmed live 2026-08-09) — RTG retargeting (`120251478599460248`) and Broad-Perth/cold (`120251478141370248`) both show `effective_status: PAUSED`, zero delivery. This is new since 07-26 (cold campaign was still ACTIVE then). Confirm intentional or reactivate. Owner: Callum.
+0c. **Google Ads/GA4 connector (AdvisorPPC) setup parked** — Callum was connecting it himself via claude.ai Settings → Connectors, hit issues, parked 2026-08-09. Once connected it will also close the long-standing GA4 gap. Owner: Callum.
+0d. **Commit today's weekly-marketing-report fix to git** — `meta-report/SKILL.md` and `weekly-marketing-report/SKILL.md` modified locally (Pipeboard→native-connector fix, verified live), not yet committed. Owner: agent, on Callum's go-ahead.
+
+## Meta ads — needs Callum confirmation (carried, superseded by item 0 above)
+0a. **RTG retargeting campaign is now fully CAMPAIGN_PAUSED** (`120251478599460248`) — previously logged as "ACTIVE but dark 5+ days," now paused at the campaign level. Confirm this was intentional; if not, it's most of the account's warm-audience reach gone quiet. Owner: Callum.
 0b. **Test-Broad-Australia ad set is now fully ADSET_PAUSED** (all ads except the still-disapproved V1) — confirm intentional. Owner: Callum.
 
 ## Meta ads — in progress
@@ -24,8 +29,11 @@
 11. **Stock photo tone tradeoff** — V2/V6 house reads more upscale/architect-designed than a typical client's home; Callum accepted this consciously over geographically-mismatched modest alternatives. Revisit only if it becomes a real concern once ads are live.
 12. **Optional cleanup** — 3 now-unused stock photos (`fhb-entrance.jpg`, `house-dusk.jpg`, `quote-pathway.jpg`) still in the design system, left in place for comparison. Low priority.
 
-## Weekly report
+## Weekly report / reporting infrastructure
 11. **Confirm the idempotency guard holds** — watch scheduled runs fire exactly once and behave correctly.
+11a. **Meta pull bug fixed 2026-08-09** — `meta-report`/`weekly-marketing-report` had been silently failing to pull Meta data for 2 consecutive scheduled runs (stale Pipeboard `get_insights` tool reference). Fixed to use native `ads_get_ad_entities` with verified field names, tested live. Not yet run end-to-end as a full scheduled report — next Monday run is the real test. Owner: agent (monitor).
+11b. **GA4 gap still open** — no GA4 MCP tool connected in this environment; skill now documents this honestly instead of pointing at a phantom tool. Fix path: connect AdvisorPPC (see item 0c above), then wire GA4 fields into the skill.
+11c. **Google Ads not yet in the weekly report at all** — once AdvisorPPC is connected, add a "Paid Search" section to `weekly-marketing-report` alongside Meta.
 
 ## Content
 12. **Week-2 blog post** — "Construction Loans in WA: How Progress Payments Actually Work", due Jul20 — still overdue, still not started. Owner: agent. (V3 Construction is the ad-delivery workhorse — post + ad angle reinforce each other, though V3 is currently paused.)
