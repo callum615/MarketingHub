@@ -1,15 +1,10 @@
 # Open loops — galway-finance
 
-*Updated 2026-08-09 — weekly-marketing-report Meta pull fixed (was silently broken 2 weeks), Google Ads/GA4 connector (AdvisorPPC) identified but parked mid-setup. Supabase remains source of truth; this file is a mirror.*
+*Updated 2026-08-10 — "5% Deposit Scheme WA" article published + Facebook graphic built; weekly-marketing-report fix committed but still unpushed; Google Ads/GA4 connector (AdvisorPPC) still parked mid-setup. Supabase remains source of truth; this file is a mirror.*
 
 ## URGENT — needs Callum confirmation
-0. **Both Meta campaigns are now fully PAUSED account-wide** (confirmed live 2026-08-09) — RTG retargeting (`120251478599460248`) and Broad-Perth/cold (`120251478141370248`) both show `effective_status: PAUSED`, zero delivery. This is new since 07-26 (cold campaign was still ACTIVE then). Confirm intentional or reactivate. Owner: Callum.
 0c. **Google Ads/GA4 connector (AdvisorPPC) setup parked** — Callum was connecting it himself via claude.ai Settings → Connectors, hit issues, parked 2026-08-09. Once connected it will also close the long-standing GA4 gap. Owner: Callum.
-0d. **Commit today's weekly-marketing-report fix to git** — `meta-report/SKILL.md` and `weekly-marketing-report/SKILL.md` modified locally (Pipeboard→native-connector fix, verified live), not yet committed. Owner: agent, on Callum's go-ahead.
-
-## Meta ads — needs Callum confirmation (carried, superseded by item 0 above)
-0a. **RTG retargeting campaign is now fully CAMPAIGN_PAUSED** (`120251478599460248`) — previously logged as "ACTIVE but dark 5+ days," now paused at the campaign level. Confirm this was intentional; if not, it's most of the account's warm-audience reach gone quiet. Owner: Callum.
-0b. **Test-Broad-Australia ad set is now fully ADSET_PAUSED** (all ads except the still-disapproved V1) — confirm intentional. Owner: Callum.
+0e. **Push commit `52fcfb3` to origin** — weekly-marketing-report/meta-report Meta-pull fix, committed 2026-08-09 to `emerald-range` but never pushed. Owner: agent, on Callum's go-ahead.
 
 ## Meta ads — in progress
 1. **Push drafted compliant ad-copy rewrite to disapproved ad** `120251618482150248` (V1 Two Lenders hero, Test-Broad-Australia) via the native Meta connector (`ads_create_creative` + `ads_update_entity`). Copy is ready (removed the "no credit check" trigger phrase, fixed a hyper-local claim). Was blocked by Pipeboard's execution cap; native connector is now live and unblocked. Owner: agent.
@@ -38,6 +33,9 @@
 ## Content
 12. **Week-2 blog post** — "Construction Loans in WA: How Progress Payments Actually Work", due Jul20 — still overdue, still not started. Owner: agent. (V3 Construction is the ad-delivery workhorse — post + ad angle reinforce each other, though V3 is currently paused.)
 13. **FB organic post** — "$100,000 apart" creative + caption ready; Callum to publish. Owner: Callum.
+14. **"First Home Buyer Grants & Schemes in WA" hub post** (FHG + FHOG + stamp duty + Keystart) — still queued at Idea stage, due Jul27, now ~2 weeks overdue. Should link to the new 5% Deposit Scheme article once written. Owner: agent.
+15. **Facebook post for the new 5% Deposit Scheme article** — graphic built in Claude Design ([FB Post - 5pct Deposit Scheme.dc.html](https://claude.ai/design/p/e5106aea-b312-446d-b2b9-49175d1de155?file=FB+Post+-+5pct+Deposit+Scheme.dc.html), 1200×628, headline "What is the 5% Deposit Scheme, and do you qualify?"), suggested caption given in-chat. Callum to actually post to Facebook (no posting capability in this environment). Owner: Callum.
+16. **Optional — 1:1 and 9:16 versions** of the new FB graphic if it gets reused across other channels. Not yet requested. Owner: agent, on explicit ask.
 
 ## Skills/docs hygiene
 14. **meta-ad-review SKILL.md stale** — still says HOUSING/CREDIT special ad category; settled decision is FINANCIAL_PRODUCTS_SERVICES. One-line fix. Owner: agent, on explicit ask.
@@ -56,6 +54,17 @@
 23. **product-marketing.md gaps** — metrics, verbatim customer language, named competitors.
 24. **GA4 hygiene from 2026-07-21 audit**: three phantom conversion events (`purchase`, `close_convert_lead`, `qualify_lead`) marked as conversions but never fired — safe to unmark. Consider marking `calculator_cta_click`/`contact_cta_click` as key events, add a custom dimension for loan-type/page-category. Low priority.
 25. **Confirm a real Calendly booking produces the Lead event end-to-end** in Meta Events Manager + GA4 — the Jul21 tracking fix's code path is proven but production has not been observed yet.
+
+## Resolved this session (Aug10)
+- ~~Research + plan the 5% Deposit Scheme article~~ — standalone deep-dive scope confirmed (not the broader grants/schemes hub post).
+- ~~Draft + stage the 5% Deposit Scheme article~~ — full copy, two Pexels images (no faces), staged as WP draft, compliance-checked.
+- ~~Fix duplicate hero image, remove em-dashes, add "what happens if you move out" FAQ~~ — all applied per Callum's feedback.
+- ~~Publish the 5% Deposit Scheme article~~ — live 2026-08-10 at `/resources/5-percent-deposit-scheme-wa/` (WP post 69), Notion row set to Published, per Callum's explicit confirmation.
+- ~~Build a Facebook promotional graphic for the article~~ — built in Claude Design on the existing brand ad-template system, 1200×628, final headline "What is the 5% Deposit Scheme, and do you qualify?" after several rounds of options.
+
+## Resolved this session (Aug9 afternoon)
+- ~~Both Meta campaigns fully PAUSED account-wide~~ — confirmed intentional 2026-08-09: **ran out of budget/money**, not a technical or deliberate-strategy pause. Reactivation is a funding decision for Callum, not a diagnostic task — no further agent action until he tops up and reactivates.
+- ~~Commit weekly-marketing-report Meta pull fix~~ — committed 2026-08-09 (`52fcfb3`), `meta-report/SKILL.md` + `weekly-marketing-report/SKILL.md`.
 
 ## Resolved this session (Jul25 afternoon)
 - ~~Redesign ad creative visuals to remove photo dependency~~ — 5 of 7 Meta ad cards rewritten in Claude Design; graphic-only ring/typography treatment, copy preserved.
