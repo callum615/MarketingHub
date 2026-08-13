@@ -1,5 +1,13 @@
 # Project — galway-finance
 
+## 2026-08-13 — 5% Deposit Scheme FB caption finalized
+Callum asked for a Facebook post for the 5% Deposit Scheme article. The graphic (built 2026-08-10) was still intact and unchanged in Claude Design, so no rebuild was needed — just verified it and drafted three caption options compliant with `AU-finance-compliance.md` (no rate quoted, so no comparison-rate/disclosure line required; no "advice" framing; no guaranteed-outcome claims). Callum chose **Option B**: "Thinking a 5% deposit sounds too good to be true? Here's exactly how the government's Home Guarantee Scheme works in WA — who qualifies, the price caps in Perth and regional areas, and the honest trade-offs most guides skip." The FB post (graphic + caption) is now fully ready; Callum still needs to post it manually (no Facebook posting capability in this environment).
+
+During startup, found a local-memory gap via Supabase: a scheduled `weekly-marketing-report` run at 2026-08-10 00:24 (Aug 3-9 report) had both Meta and GA4 sections empty — the native Meta connector wasn't enabled for that scheduled-session context, distinct from the ad-hoc Pipeboard→native fix shipped 2026-08-09. Not fixed this session; carried forward as open loop 0f.
+
+Key settled decisions:
+- **5% Deposit Scheme FB caption**: Option B (question-led), chosen over direct-informational and short/scroll-stopping alternatives
+
 ## 2026-08-10 — "5% Deposit Scheme WA" article researched, drafted, published; Facebook graphic built
 Callum asked to research and plan a blog article on the Australian Government's 5% Deposit Scheme. Researched the current rules externally (Housing Australia, firsthomebuyers.gov.au, MFAA): no income cap or place limit since 1 Oct 2025, WA price caps $850k Perth / $600k regional, 5% deposit (2% single parents), no LMI, applied through a participating lender not the government directly. Cross-checked locally that no dedicated content already existed on this topic (only brief service-page mentions), and confirmed with Callum this should be a standalone deep-dive kept separate from the already-queued broader "First Home Buyer Grants & Schemes in WA" hub post.
 

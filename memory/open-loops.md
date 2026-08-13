@@ -1,10 +1,10 @@
 # Open loops — galway-finance
 
-*Updated 2026-08-10 — "5% Deposit Scheme WA" article published + Facebook graphic built; weekly-marketing-report fix committed but still unpushed; Google Ads/GA4 connector (AdvisorPPC) still parked mid-setup. Supabase remains source of truth; this file is a mirror.*
+*Updated 2026-08-13 — 5% Deposit Scheme FB caption finalized (Option B), post fully ready for Callum to publish; scheduled-session Meta connector gap (found 2026-08-10 00:24 run) still open. Supabase remains source of truth; this file is a mirror.*
 
 ## URGENT — needs Callum confirmation
 0c. **Google Ads/GA4 connector (AdvisorPPC) setup parked** — Callum was connecting it himself via claude.ai Settings → Connectors, hit issues, parked 2026-08-09. Once connected it will also close the long-standing GA4 gap. Owner: Callum.
-0e. **Push commit `52fcfb3` to origin** — weekly-marketing-report/meta-report Meta-pull fix, committed 2026-08-09 to `emerald-range` but never pushed. Owner: agent, on Callum's go-ahead.
+0f. **Scheduled weekly-marketing-report run (2026-08-10 00:24, Aug3-9 report) came back with Meta AND GA4 both empty** — native Meta connector wasn't enabled for that scheduled-session context specifically (separate issue from the ad-hoc Pipeboard→native fix already shipped 2026-08-09). Needs fixing before next Monday's scheduled run. Owner: agent.
 
 ## Meta ads — in progress
 1. **Push drafted compliant ad-copy rewrite to disapproved ad** `120251618482150248` (V1 Two Lenders hero, Test-Broad-Australia) via the native Meta connector (`ads_create_creative` + `ads_update_entity`). Copy is ready (removed the "no credit check" trigger phrase, fixed a hyper-local claim). Was blocked by Pipeboard's execution cap; native connector is now live and unblocked. Owner: agent.
@@ -34,7 +34,7 @@
 12. **Week-2 blog post** — "Construction Loans in WA: How Progress Payments Actually Work", due Jul20 — still overdue, still not started. Owner: agent. (V3 Construction is the ad-delivery workhorse — post + ad angle reinforce each other, though V3 is currently paused.)
 13. **FB organic post** — "$100,000 apart" creative + caption ready; Callum to publish. Owner: Callum.
 14. **"First Home Buyer Grants & Schemes in WA" hub post** (FHG + FHOG + stamp duty + Keystart) — still queued at Idea stage, due Jul27, now ~2 weeks overdue. Should link to the new 5% Deposit Scheme article once written. Owner: agent.
-15. **Facebook post for the new 5% Deposit Scheme article** — graphic built in Claude Design ([FB Post - 5pct Deposit Scheme.dc.html](https://claude.ai/design/p/e5106aea-b312-446d-b2b9-49175d1de155?file=FB+Post+-+5pct+Deposit+Scheme.dc.html), 1200×628, headline "What is the 5% Deposit Scheme, and do you qualify?"), suggested caption given in-chat. Callum to actually post to Facebook (no posting capability in this environment). Owner: Callum.
+15. **Facebook post for the new 5% Deposit Scheme article** — graphic built in Claude Design ([FB Post - 5pct Deposit Scheme.dc.html](https://claude.ai/design/p/e5106aea-b312-446d-b2b9-49175d1de155?file=FB+Post+-+5pct+Deposit+Scheme.dc.html), 1200×628, headline "What is the 5% Deposit Scheme, and do you qualify?"). Caption finalized 2026-08-13 (Option B, question-led — see decisions in `projects/galway-finance.md`). Post is fully ready; Callum to actually post to Facebook (no posting capability in this environment). Owner: Callum.
 16. **Optional — 1:1 and 9:16 versions** of the new FB graphic if it gets reused across other channels. Not yet requested. Owner: agent, on explicit ask.
 
 ## Skills/docs hygiene
