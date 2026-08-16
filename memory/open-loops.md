@@ -1,6 +1,8 @@
 # Open loops — galway-finance
 
-*Updated 2026-08-13 — 5% Deposit Scheme FB caption finalized (Option B), post fully ready for Callum to publish; scheduled-session Meta connector gap (found 2026-08-10 00:24 run) still open. Supabase remains source of truth; this file is a mirror.*
+*Updated 2026-08-16 (afternoon) — marketing focus shifted to the referral-partner network; Purple Circle Phase 0 gate CLEARED, one-pager rewritten to v2, broking-conflict check done on top prospects. Supabase remains source of truth; this file is a mirror.*
+
+> ⚠️ **This file drifted badly from reality once already.** On 2026-08-16 it listed the referral prospect list and partner one-pager as untouched when both had been drafted 3 weeks earlier. The referral workstream is tracked in the Notion DB "Referral Network Plan — Progress" (`collection://27ab65ca-3564-46f4-8044-81cd1e1c2471`) — **read that before trusting the referral section below.**
 
 ## URGENT — needs Callum confirmation
 0c. **Google Ads/GA4 connector (AdvisorPPC) setup parked** — Callum was connecting it himself via claude.ai Settings → Connectors, hit issues, parked 2026-08-09. Once connected it will also close the long-standing GA4 gap. Owner: Callum.
@@ -33,20 +35,32 @@
 ## Content
 12. **Week-2 blog post** — "Construction Loans in WA: How Progress Payments Actually Work", due Jul20 — still overdue, still not started. Owner: agent. (V3 Construction is the ad-delivery workhorse — post + ad angle reinforce each other, though V3 is currently paused.)
 13. **FB organic post** — "$100,000 apart" creative + caption ready; Callum to publish. Owner: Callum.
-14. **"First Home Buyer Grants & Schemes in WA" hub post** (FHG + FHOG + stamp duty + Keystart) — still queued at Idea stage, due Jul27, now ~2 weeks overdue. Should link to the new 5% Deposit Scheme article once written. Owner: agent.
-15. **Facebook post for the new 5% Deposit Scheme article** — graphic built in Claude Design ([FB Post - 5pct Deposit Scheme.dc.html](https://claude.ai/design/p/e5106aea-b312-446d-b2b9-49175d1de155?file=FB+Post+-+5pct+Deposit+Scheme.dc.html), 1200×628, headline "What is the 5% Deposit Scheme, and do you qualify?"). Caption finalized 2026-08-13 (Option B, question-led — see decisions in `projects/galway-finance.md`). Post is fully ready; Callum to actually post to Facebook (no posting capability in this environment). Owner: Callum.
-16. **Optional — 1:1 and 9:16 versions** of the new FB graphic if it gets reused across other channels. Not yet requested. Owner: agent, on explicit ask.
+16. **Instagram square post for the FHB Grants & Schemes article** — 1080×1080 graphic built ([FB Post - FHB Grants and Schemes (1x1).dc.html](https://claude.ai/design/p/e5106aea-b312-446d-b2b9-49175d1de155?file=FB+Post+-+FHB+Grants+and+Schemes+%281x1%29.dc.html)), same caption/link as the FB post. Ready; Callum to post to Instagram. Owner: Callum.
+17. **Other overdue posts**: "Is Refinancing Worth It" (~1.5wk overdue), "Self-Employed Home Loans" (~5 days overdue), "House-and-Land Packages in Perth's Northern Corridor" (due imminently) — all still at Idea stage. Owner: agent.
 
 ## Skills/docs hygiene
+13a. **`/startup` skips Supabase** — the 2026-08-16 startup reported memory status as `local` only, but the Marketing Hub project (`vpmccpkhftzmmwhkensk`, ap-southeast-2) is ACTIVE_HEALTHY and queryable via the Supabase MCP the whole time. Startup must actually attempt the query instead of assuming no access — this is what let local memory drift 3 weeks without anyone noticing. Owner: agent.
 14. **meta-ad-review SKILL.md stale** — still says HOUSING/CREDIT special ad category; settled decision is FINANCIAL_PRODUCTS_SERVICES. One-line fix. Owner: agent, on explicit ask.
 
-## Referral network (Jul21 plan, largely untouched since)
-15. Rank existing loose contacts by type/warmth (was due Jul22)
-16. Confirm referral-relationship structure with Purple Circle (reciprocal only, no fees tied to loan value/volume) (was due Jul23)
-17. Draft the standard "what's in it for you" one-liner for partners (was due Jul23)
-18. Build target prospect list (5-8 per type) across Perth metro (was due Jul25)
-19. Create the partner one-pager (was due Jul25)
-20. Full 12-task plan tracked in Notion "Referral Network Plan - Progress" (Marketing Hub) — check there for current status, this list may be stale.
+## Referral network — NOW THE PRIMARY LEAD CHANNEL (unblocked 2026-08-16)
+Settled 2026-08-16: this is where immediate marketing effort goes while Meta is paused. Meta has spent ~$500+ since Jul12 for zero leads ever; referral partners cost nothing and reach buyers at point of sale.
+
+**Blocking Callum:**
+15. **Read one-pager v2 and confirm the same-business-day commitment is one he'll actually keep** — it's the spine of the new positioning, and breaking it with a referral partner is worse than never promising it. Owner: Callum. ⬅ *do this before any outreach*
+16. **Sign off one-pager v2 copy.** Content is final pending his read; brand design pass still outstanding. Owner: Callum.
+17. **Identify a current client to refer to Alkimos Tax or A&T** — executes the give-first move (Notion task now Phase 2, due Aug19) before making any ask. Owner: Callum.
+
+**Verification asks (do during first contact, not desk research):**
+18. **Ask Justin O'Connell (Century 21 Gold Key) whether the office already has a finance referral arrangement** — Century 21 Australia runs CENTURY 21 Home Loans (Centurion Home Loans Services, ACL 388668), but the Clarkson office's own site never mentions it. Not an exclusion, an open question. Owner: Callum/agent.
+19. **Same ask for Professionals Northern Coast** — Professionals Home Finance exists at group level. Owner: Callum/agent.
+20. **Confirm A&T Financial Advisers holds no credit licence** — AFSL-only via Synchron Advice 243313, but they list "mortgage planning". If confirmed licence-free they're the strongest prospect on the list. Owner: agent (phone).
+
+**Agent next:**
+21. **Draft outreach messages** for the three cleared prospects (Alkimos Tax Accounting → A&T Financial Advisers → Northern Beaches Realty, in that order). Owner: agent.
+22. **Rank existing loose contacts by type/warmth** (was due Jul22, still not started). Owner: Callum.
+23. **Scope a local networking group** (BNI/chamber) as a force-multiplier (was due Aug1). Owner: Callum.
+
+Full 12-task plan lives in Notion "Referral Network Plan — Progress" — that DB is authoritative, not this list.
 
 ## Carried forward (unchanged)
 21. **Purple Circle sign-off** on `.claude/AU-finance-compliance.md`. Owner: Callum.
@@ -54,6 +68,19 @@
 23. **product-marketing.md gaps** — metrics, verbatim customer language, named competitors.
 24. **GA4 hygiene from 2026-07-21 audit**: three phantom conversion events (`purchase`, `close_convert_lead`, `qualify_lead`) marked as conversions but never fired — safe to unmark. Consider marking `calculator_cta_click`/`contact_cta_click` as key events, add a custom dimension for loan-type/page-category. Low priority.
 25. **Confirm a real Calendly booking produces the Lead event end-to-end** in Meta Events Manager + GA4 — the Jul21 tracking fix's code path is proven but production has not been observed yet.
+
+## Resolved this session (Aug16 afternoon)
+- ~~Confirm referral-relationship structure with Purple Circle~~ — **Phase 0 gate CLEARED 2026-08-16**; commission-split template sorted. This single task had been blocking the entire referral workstream since Jul23.
+- ~~Build target prospect list~~ — done 2026-07-27 (local memory had wrongly recorded this as untouched). 11 vetted prospects.
+- ~~Create the partner one-pager~~ — drafted 2026-07-26, **rewritten to v2 2026-08-16** around partner deal-risk rather than company features.
+- ~~Draft the "what's in it for you" one-liner~~ — *"You send me a name and a number. I make sure the finance doesn't kill your deal, and you get paid when it settles."*
+- ~~Compliance phrase in partner one-pager~~ — "no credit check from an initial enquiry" stripped; same phrase that got Meta ad `120251618482150248` disapproved Jul22, propagated into the partner doc unnoticed.
+- ~~Broking-conflict check on top prospects~~ — Century 21 + Professionals flagged (group-level finance arms); Alkimos Tax, A&T Financial, Northern Beaches Realty cleared.
+
+## Resolved this session (Aug16)
+- ~~Draft, fact-check + publish the "First Home Buyer Grants & Schemes in WA" hub post~~ — published at `/resources/first-home-buyer-grants-wa/` (WP post 73); fact-checked against primary sources, two errors caught and fixed.
+- ~~Facebook post for the FHB Grants & Schemes article~~ — graphic + caption built, posted live by Callum.
+- ~~Notion Content Library row stale (showed Editing despite... )~~ — n/a this row, but the row's Stage was corrected to Published after confirming live WP status.
 
 ## Resolved this session (Aug10)
 - ~~Research + plan the 5% Deposit Scheme article~~ — standalone deep-dive scope confirmed (not the broader grants/schemes hub post).
