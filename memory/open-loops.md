@@ -4,6 +4,14 @@
 
 > ⚠️ **This file drifted badly from reality once already.** On 2026-08-16 it listed the referral prospect list and partner one-pager as untouched when both had been drafted 3 weeks earlier. The referral workstream is tracked in the Notion DB "Referral Network Plan — Progress" (`collection://27ab65ca-3564-46f4-8044-81cd1e1c2471`) — **read that before trusting the referral section below.**
 
+## STRATEGIC — self-employed repositioning (new 2026-08-16 evening)
+Callum is repositioning Galway Finance around **self-employed clients**, as the natural path into asset and commercial finance. Sharpened to: tradies and small business owners in the northern growth corridor, on a home loan → asset finance → commercial ladder. `.agents/product-marketing.md` rewritten to V2; `.agents/content-strategy.md` pillar 5 promoted to anchor.
+
+0a. **⛔ GATE — Purple Circle conversation. Blocks the whole expansion.** Confirm: (1) asset finance accreditation path, timeline, prerequisites; (2) commercial accreditation path + whether mentoring is mandatory; (3) **which alt-doc/self-employed lenders Callum is actually accredited with** — this is the product for this ICP and no honest capability claim can be made without it. Owner: Callum. Same shape as the referral-structure gate that silently blocked things for 24 days — do not let it sit.
+0b. **Competitive check not done** — which Perth brokers already market to self-employed borrowers? That's the competitive set that matters now, and `product-marketing.md` has it flagged ⚠️. Owner: agent.
+0d. **No self-employed service/landing page on the website** — the site still leads with first-home-buyer positioning. Gap. Owner: agent.
+0e. **Add-backs comparison sheet** — how each of the top ~5 lenders treats depreciation, one-offs, additional super, non-recurring costs, interest on refinanced debt. Doubles as the single best leave-behind for an accountant. Gated on 0a(3). Owner: agent.
+
 ## URGENT — needs Callum confirmation
 0c. **Google Ads/GA4 connector (AdvisorPPC) setup parked** — Callum was connecting it himself via claude.ai Settings → Connectors, hit issues, parked 2026-08-09. Once connected it will also close the long-standing GA4 gap. Owner: Callum.
 0f. **Scheduled weekly-marketing-report run (2026-08-10 00:24, Aug3-9 report) came back with Meta AND GA4 both empty** — native Meta connector wasn't enabled for that scheduled-session context specifically (separate issue from the ad-hoc Pipeboard→native fix already shipped 2026-08-09). Needs fixing before next Monday's scheduled run. Owner: agent.
@@ -56,7 +64,17 @@ Settled 2026-08-16: this is where immediate marketing effort goes while Meta is 
 20. **Confirm A&T Financial Advisers holds no credit licence** — AFSL-only via Synchron Advice 243313, but they list "mortgage planning". If confirmed licence-free they're the strongest prospect on the list. Owner: agent (phone).
 
 **Agent next:**
-21. **Draft outreach messages** for the three cleared prospects (Alkimos Tax Accounting → A&T Financial Advisers → Northern Beaches Realty, in that order). Owner: agent.
+21. **Draft outreach messages** for cleared prospects. Owner: agent.
+    - ~~Alkimos Tax Accounting (Ben Carter)~~ — drafted 2026-08-16, refined into Callum's own voice, **sent 2026-08-17** ("Coffee Catch Up"). First real outreach email of the referral workstream.
+    - ~~The Accounting Collective Perth (Rachael)~~ — drafted and **sent 2026-08-17** ("Coffee Catch Up", same voice/template as Ben's).
+    - **A&T Financial Advisers (Tim Vander Kraats)** — drafted 2026-08-17, sitting as a Gmail draft, **not yet sent**. Planner framing (lending sits alongside his strategy work), not the tax-tension wedge used for accountants.
+    - **Enlighten Financial Services (Sarit Shah)** — drafted 2026-08-17, then **disregarded by Callum 2026-08-17** — do not send, do not follow up. Left as an orphaned Gmail draft (no delete-draft tool available in this environment). Reason flagged before disregarding: her LinkedIn lists "Senior Mortgage Broker" alongside planner, which would make her a direct competitor not a referral partner, though Enlighten's own site shows AFSL-only with no credit licence — never resolved either way.
+    - ~~Shoebox Books and Tax (Charné Humphreys)~~ — new prospect, found 2026-08-17 (not on the original July list; corridor-wide coverage incl. Alkimos/Yanchep/Two Rocks/Butler/Eglinton/Jindalee, no finance/broking conflict). Personalized with a genuine parallel — Callum supplied Instagram/LinkedIn screenshots showing she launched Shoebox Books & Tax Joondalup in May 2026, same window as Galway Finance's own launch — and **sent 2026-08-17**.
+    - **Success Tax Professionals Clarkson (Audrey de Beer)** — new prospect, found 2026-08-17, no finance conflict, 20+ years running Joondalup/Clarkson franchises. **Email not yet obtained** — WebFetch/WebSearch kept redacting the address; phone is (08) 9408 5908. Still needs either the real email from Callum or a phone-script approach.
+    - Northern Beaches Realty, OmegaCA — still to draft.
+    - **Add Shoebox Books and Tax + Success Tax Professionals Clarkson to the Notion Target Prospect List** — found this session, not yet logged there. Owner: agent, next touch.
+21a. **Accountant-specific one-pager drafted** — [Referral Partner One-Pager — ACCOUNTANTS (v1)](https://app.notion.com/p/3bec844e9c4381ee8857cc9d78f1fbce). Leads with the tax-minimisation tension, adds a "when to send someone my way" trigger table, commits to never touching the tax position and never taking the client relationship. The general v2 one-pager is now effectively the **real-estate** variant. Awaiting Callum's sign-off + brand design pass. Note: its "referral never dead-ends" line depends on gate 0a.
+21b. **Outreach voice correction, 2026-08-17:** Callum rewrote the Ben Carter draft substantially before sending — warmer, more personal ("I genuinely just love business," "untangling inter-entity loans"), subject line "Coffee Catch Up" not "Local broker, quick introduction." Subsequent A&T/Rachael/Sarit drafts were built to match this actual sent voice, not the original Notion outreach doc draft. **The Notion outreach doc (`Outreach — Alkimos Tax Accounting`) is now stale relative to what was actually sent — update it from the sent Gmail thread next time that page is touched.**
 22. **Rank existing loose contacts by type/warmth** (was due Jul22, still not started). Owner: Callum.
 23. **Scope a local networking group** (BNI/chamber) as a force-multiplier (was due Aug1). Owner: Callum.
 
