@@ -1,6 +1,9 @@
 # Open loops — galway-finance
 
-*Updated 2026-07-27 (referral network prospect list + builder-finance-arm check) — Meta ads section below is only current as of 2026-07-21; this worktree missed 5 sessions through 2026-07-25 (see `memory/sessions/2026-07-26_1013_referral-network-compliance-fix.md` and Supabase `session_logs` for what changed since, or branch `emerald-range` for the local file trail). Treat Supabase as authoritative for Meta ads state until this file is reconciled.*
+*Updated 2026-08-24 (startup only). **This file is STALE — do not trust it.** Supabase is authoritative and is current through 2026-08-24; this worktree's local memory stops at 2026-07-27 and misses ~4 weeks (Meta ads paused on funding, referral outreach actually sent, self-employed ICP repositioning, content backlog). Prefer working from `main`. Everything below is a 2026-07-21/27 snapshot kept only for trail.*
+
+## URGENT — uncommitted compliance guardrail (added 2026-08-24)
+- **Commit `.claude/AU-finance-compliance.md` to main.** The "Settled 2026-07-26" paragraph — referral partners paid via **commission split under Purple Circle's own agreement template** (superseding the old blanket "referral fees likely prohibited" line) — exists ONLY as an uncommitted working-tree change in `branched-badger`. Verified absent from `origin/main`. It governs the live referral-partner workstream. The 2026-08-16 drift audit missed it because it compared committed trees only. Owner: agent, on Callum's explicit go-ahead (non-memory file).
 
 ## In-person referral network (new workstream, started ~2026-07-21/22)
 Full 12-task plan tracked live in Notion: "Referral Network Plan — Progress" (under Marketing Hub).

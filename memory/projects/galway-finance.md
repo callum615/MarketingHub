@@ -1,5 +1,12 @@
 # Project — galway-finance
 
+## 2026-08-24 — Startup only; found an uncommitted compliance guardrail unique to this worktree
+No marketing work executed. Loaded Supabase (authoritative, current through 2026-08-24) against this worktree's local memory (stops 2026-07-27) — `branched-badger` is ~4 weeks stale and misses the Meta-ads funding pause, the real referral outreach sends, the self-employed ICP repositioning, and the content backlog.
+
+The finding worth keeping: `.claude/AU-finance-compliance.md` holds an **uncommitted** working-tree change containing the "Settled 2026-07-26" paragraph — referral partners paid via **commission split under Purple Circle's own agreement template**, superseding the old blanket "referral fees likely prohibited" framing. `git show origin/main` confirms main does not have it. The 2026-08-16 drift audit concluded this file was byte-identical everywhere and nothing was lost; that was wrong, because it compared committed trees and never checked working-tree state. Since this guardrail governs the live referral-partner workstream, it needs committing to main.
+
+Lesson: drift audits across worktrees must run `git status`/`git diff` per worktree, not just diff committed content. And guardrail edits to non-`memory/` files fall outside the standing "commit memory/ only" wrap-up rule, so they sit uncommitted indefinitely — flag them explicitly for commit rather than only noting them in the receipt.
+
 ## 2026-07-27 — Referral network: target prospect list built, WA volume-builder finance-arm pattern discovered
 Focused session on in-person referral-network prospecting. Ran Local-SMB research across accountants, financial planners, and building/real-estate reps in Perth's northern corridor. Callum drove several rounds of "check if X already has a broker relationship" (Ray White, Endeavour Homes, B1 Homes, Redink Homes, Content Living, Home Group), which uncovered a real pattern worth remembering: nearly every WA volume/project home builder running a display village is vertically integrated with its own in-house or group-owned mortgage broker — ABN Group→Resolve Finance (Dale Alcock Homes, Celebration Homes), Scott Park Group→Lets Finance (B1 Homes, Redink Homes), Endeavour Homes→Central Lending Solutions — and Ray White Group owns Loan Market Group outright with an exclusive referral-from-day-one arrangement. All of these were excluded as referral targets. Callum corrected one assumption (Blueprint Homes is not ABN Group-owned); verified and reinstated it as a candidate.
 
