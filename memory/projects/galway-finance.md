@@ -214,3 +214,6 @@ Key IDs: Meta account `act_1928354054506891` · GA4 property `541904526` · WP s
 
 ## 2026-07-11 — Foundation
 Memory system (Supabase + startup/wrap-up), 37 marketing skills installed + pruned, AU-finance-compliance.md guardrails wired into regulated skills.
+
+## 2026-08-31 — Connector strategy
+Advisory session, no execution. Ruled out paying for Pipeboard (native Meta connector verified live and free; Pipedrive is a CRM, not a substitute). Superseded the 2026-08-09 AdvisorPPC pick in favour of Google's official first-party read-only MCP servers: `analytics-mcp` for GA4 (no approval gate, install first) and `google-ads-mcp` (needs a developer token with Explorer access — only worth pursuing if Google Ads spend actually exists). Key constraint surfaced: both are local stdio and therefore cannot fix the 6-week scheduled weekly-report blackout, which needs the report run locally, a Cloud Run deployment, or a hosted vendor. Also found Callum's personal Meta ad account 145431623 is DISABLED; the Galway Finance business account is unaffected. Local memory in this worktree had drifted 14 days behind Supabase — third recorded instance.

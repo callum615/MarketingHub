@@ -1,8 +1,22 @@
 # Open loops — galway-finance
 
-*Updated 2026-08-16 (afternoon) — marketing focus shifted to the referral-partner network; Purple Circle Phase 0 gate CLEARED, one-pager rewritten to v2, broking-conflict check done on top prospects. Supabase remains source of truth; this file is a mirror.*
+*Updated 2026-08-31 — connector strategy settled in principle; local memory had drifted 14 days behind Supabase again.*
 
-> ⚠️ **This file drifted badly from reality once already.** On 2026-08-16 it listed the referral prospect list and partner one-pager as untouched when both had been drafted 3 weeks earlier. The referral workstream is tracked in the Notion DB "Referral Network Plan — Progress" (`collection://27ab65ca-3564-46f4-8044-81cd1e1c2471`) — **read that before trusting the referral section below.**
+> ⚠️ **Supabase is the source of truth, not this file.** On 2026-08-31 this worktree's local memory stopped at 2026-08-17 while Supabase was current to 2026-08-31, hiding two sessions including a 6-week reporting blackout. This is the third recorded drift instance. Always check Supabase `max(created_at)` at startup before trusting anything here.
+> The referral workstream is tracked in the Notion DB "Referral Network Plan — Progress" (`collection://27ab65ca-3564-46f4-8044-81cd1e1c2471`) — read that before trusting the referral section below.
+
+## ⚡ TOP PRIORITY (2026-08-31)
+A. **Follow up the 3 referral outreach emails sent 2026-08-17** — Ben Carter (Alkimos Tax), Rachael (The Accounting Collective), Charné Humphreys (Shoebox Books). **14 days silent, no follow-up recorded.** This is the highest-leverage open item in the whole file: the channel is free, already in motion, and decaying. Owner: Callum/agent.
+B. **Send or drop the A&T Financial Advisers (Tim Vander Kraats) Gmail draft** — still sitting unsent since 2026-08-17. Owner: Callum.
+
+## Connectors & reporting — RESOLVED IN PRINCIPLE 2026-08-31
+- ✅ **Do not pay for Pipeboard.** Verified live: the free native Meta connector reaches Galway Finance `1928354054506891` (ACTIVE, queryable). Pipedrive is a CRM, not a substitute for an ads connector.
+- ✅ **Connector choice v2**: use Google's **official first-party read-only MCP servers** — `analytics-mcp` (GA4) and `google-ads-mcp` — **not AdvisorPPC** (community, write access, OAuth never worked). The AdvisorPPC decision is marked superseded in Supabase.
+- 🔲 **Install GA4 server** — `claude mcp add analytics-mcp -- pipx run analytics-mcp`, then ADC with `analytics.readonly`. ~10 min, no approval gate. Awaiting Callum's go-ahead. Owner: agent.
+- 🔲 **Confirm whether Google Ads spend actually exists** before pursuing a developer token (needs Explorer access via an MCC application). If there's no spend, skip it — GA4 alone closes the gap. Owner: Callum.
+- ⚠️ **The scheduled-report blackout is NOT fixed by the above.** Both Google servers are **local stdio** — a cloud-scheduled run cannot reach a server on Callum's Mac. Must separately choose: (1) run the weekly report locally, (2) deploy to Cloud Run, or (3) hosted vendor. Owner: Callum decision, agent to execute.
+- 🔲 **Personal Meta ad account `145431623` (USD) is DISABLED** — flagged for unusual activity, all ads paused. Business account unaffected. Contact Meta if the account is still wanted. Owner: Callum.
+- 🔲 **Backfill local memory** with the 2026-08-24 and 2026-08-31 sessions, or formally accept Supabase as sole source of truth for this worktree. Owner: agent.
 
 ## STRATEGIC — self-employed repositioning (new 2026-08-16 evening)
 Callum is repositioning Galway Finance around **self-employed clients**, as the natural path into asset and commercial finance. Sharpened to: tradies and small business owners in the northern growth corridor, on a home loan → asset finance → commercial ladder. `.agents/product-marketing.md` rewritten to V2; `.agents/content-strategy.md` pillar 5 promoted to anchor.
@@ -13,8 +27,8 @@ Callum is repositioning Galway Finance around **self-employed clients**, as the 
 0e. **Add-backs comparison sheet** — how each of the top ~5 lenders treats depreciation, one-offs, additional super, non-recurring costs, interest on refinanced debt. Doubles as the single best leave-behind for an accountant. Gated on 0a(3). Owner: agent.
 
 ## URGENT — needs Callum confirmation
-0c. **Google Ads/GA4 connector (AdvisorPPC) setup parked** — Callum was connecting it himself via claude.ai Settings → Connectors, hit issues, parked 2026-08-09. Once connected it will also close the long-standing GA4 gap. Owner: Callum.
-0f. **Scheduled weekly-marketing-report run (2026-08-10 00:24, Aug3-9 report) came back with Meta AND GA4 both empty** — native Meta connector wasn't enabled for that scheduled-session context specifically (separate issue from the ad-hoc Pipeboard→native fix already shipped 2026-08-09). Needs fixing before next Monday's scheduled run. Owner: agent.
+0c. ~~**Google Ads/GA4 connector (AdvisorPPC) setup parked**~~ — **SUPERSEDED 2026-08-31**, see Connectors section above; use the official Google servers instead. Original note: — Callum was connecting it himself via claude.ai Settings → Connectors, hit issues, parked 2026-08-09. Once connected it will also close the long-standing GA4 gap. Owner: Callum.
+0f. **Scheduled weekly report returns Meta AND GA4 empty — now 6+ consecutive weeks (through 2026-08-31)**; root cause identified 2026-08-31 as scheduled sessions being unable to reach local/decommissioned servers, see Connectors section. Original note: — native Meta connector wasn't enabled for that scheduled-session context specifically (separate issue from the ad-hoc Pipeboard→native fix already shipped 2026-08-09). Needs fixing before next Monday's scheduled run. Owner: agent.
 
 ## Meta ads — in progress
 1. **Push drafted compliant ad-copy rewrite to disapproved ad** `120251618482150248` (V1 Two Lenders hero, Test-Broad-Australia) via the native Meta connector (`ads_create_creative` + `ads_update_entity`). Copy is ready (removed the "no credit check" trigger phrase, fixed a hyper-local claim). Was blocked by Pipeboard's execution cap; native connector is now live and unblocked. Owner: agent.
@@ -37,8 +51,8 @@ Callum is repositioning Galway Finance around **self-employed clients**, as the 
 ## Weekly report / reporting infrastructure
 11. **Confirm the idempotency guard holds** — watch scheduled runs fire exactly once and behave correctly.
 11a. **Meta pull bug fixed 2026-08-09** — `meta-report`/`weekly-marketing-report` had been silently failing to pull Meta data for 2 consecutive scheduled runs (stale Pipeboard `get_insights` tool reference). Fixed to use native `ads_get_ad_entities` with verified field names, tested live. Not yet run end-to-end as a full scheduled report — next Monday run is the real test. Owner: agent (monitor).
-11b. **GA4 gap still open** — no GA4 MCP tool connected in this environment; skill now documents this honestly instead of pointing at a phantom tool. Fix path: connect AdvisorPPC (see item 0c above), then wire GA4 fields into the skill.
-11c. **Google Ads not yet in the weekly report at all** — once AdvisorPPC is connected, add a "Paid Search" section to `weekly-marketing-report` alongside Meta.
+11b. **GA4 gap still open** *(fix path updated 2026-08-31: official `analytics-mcp`, not AdvisorPPC)* — no GA4 MCP tool connected in this environment; skill now documents this honestly instead of pointing at a phantom tool. Fix path: connect AdvisorPPC (see item 0c above), then wire GA4 fields into the skill.
+11c. **Google Ads not yet in the weekly report at all** *(2026-08-31: first confirm any Google Ads spend exists before building this)* — once AdvisorPPC is connected, add a "Paid Search" section to `weekly-marketing-report` alongside Meta.
 
 ## Content
 12. **Week-2 blog post** — "Construction Loans in WA: How Progress Payments Actually Work", due Jul20 — still overdue, still not started. Owner: agent. (V3 Construction is the ad-delivery workhorse — post + ad angle reinforce each other, though V3 is currently paused.)
