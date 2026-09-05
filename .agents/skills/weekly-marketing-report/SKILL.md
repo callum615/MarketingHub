@@ -1,0 +1,66 @@
+---
+name: weekly-marketing-report
+description: Produce the weekly Galway Finance marketing report combining Meta Ads spend/leads and GA4 website traffic into one Notion page with plain-English commentary. Use when the user says "weekly report," "weekly marketing report," "marketing update," "how did marketing go this week," or when a scheduled routine triggers it. Read-only against all data sources; writes only the Notion report page.
+---
+
+# Weekly Marketing Report — Galway Finance
+
+One page, one minute to read, one clear "do this next week." Combines paid (Meta) and site (GA4) into a single picture. Data pulls are read-only; the only write is the Notion report page.
+
+## Before pulling any data (idempotency guard)
+
+This routine has fired more than once in the same week before (manual test runs during development are indistinguishable from a real cron fire, since both log to `session_logs` the same way). Extra fires that redo full Meta/GA4 pulls burn Pipeboard's free-tier weekly quota for no reason — that's what caused the Jul 14 2026 outage where both connectors hit their limit mid-week.
+
+1. Compute the target week: the 7 days Monday–Sunday ending on the most recently completed Sunday, Perth time.
+2. Search Notion for a page titled `Marketing Week — [Mon D] to [Sun D Mon YYYY]` for that exact week, under the Marketing Hub page.
+3. If that page already exists: **do not call Meta or GA4 at all.** Log a one-line `session_logs` row (objective unchanged, summary noting "page already exists for this week, no data pulled, no action taken") and stop.
+4. Only proceed to the Data pulls section below if no page exists yet for the completed week.
+
+## Data pulls
+
+1. **Meta**: follow the `meta-report` skill's Step 1–2 (account `1928354054506891`, `last_7d` daily breakdown + prior-7d comparison via `ads_get_ad_entities`, lead-counting and fatigue rules apply as written there).
+2. **GA4** (property `541904526`, timezone Australia/Perth): as of 2026-08-09 there is no GA4/Google Analytics MCP tool connected in this environment — check first with a tool search (e.g. `ToolSearch` for "analytics"/"GA4") in case one has since been added. If none is found, do not guess numbers or reference `run_google_analytics_report` (a stale tool name from a prior setup that no longer exists) — mark the Website section as a clean data gap in the report, same as the last two scheduled runs correctly did. If a GA4 tool is found, pull two `dateRanges` (`7daysAgo→today` named `this_week`, `14daysAgo→8daysAgo` named `last_week`):
+   - by `sessionDefaultChannelGroup`: sessions, activeUsers, keyEvents
+   - by `pagePath` (this week only, ordered by screenPageViews, limit 10): what people actually read
+3. Editorial calendar: the Content Library database on the Marketing Hub page (Notion data source `40dcbf2b-102f-4efc-837e-86f426e6fe03`), filtered to `Format = Blog`: what shipped this week, what's queued next (Stage: Idea = queued, Editing = staged in WP awaiting review).
+
+## Known measurement quirks (state them, don't hide them)
+
+- **Meta lead ads convert on-platform** — GA4's "Paid Social" sessions will look tiny next to Meta spend. That's the funnel design, not a failure. Leads live in Meta's numbers.
+- **GA4 has no booking/lead key event yet** (only purchase/qualify_lead/close_convert_lead) — until that's fixed, GA4 measures attention, not outcomes. Flag this gap in every report until it's closed.
+- The account is young: small numbers, wide swings. Compare directionally, don't over-read percentages on bases under ~50.
+
+## Report structure (create as a Notion page)
+
+Title: `Marketing Week — [Mon D] to [Sun D Mon YYYY]`. Create via `notion-create-pages`. Parent: the "Marketing Reports" page if one exists (search first); otherwise create standalone and note where it landed.
+
+```
+TL;DR — 3 sentences max: money spent, leads in, the one action for next week.
+
+## Paid (Meta)
+Spend / leads (by type, per meta-report rules) / CPL / fatigue signals.
+Table: this week vs last week.
+
+## Website (GA4)
+Sessions + users by channel, WoW. Top pages. Anything notable (a post ranking, a channel moving).
+
+## Content
+Shipped this week (from the Content Library) · next week's queued post · pipeline health (any blog post stuck in Editing > 7 days).
+
+## Signals & risks
+Fatigue flags, measurement gaps, compliance items awaiting sign-off.
+
+## Next week
+Max 3 actions, ordered by impact. Concrete, not "monitor performance."
+```
+
+## After creating the page
+
+- Terminal output: just the TL;DR + the Notion page link.
+- If any fatigue signal from `meta-report` is CRITICAL (e.g. 4+ days spend with zero leads), say so in the terminal output too — don't bury it in the page.
+
+## Rules
+
+- Read-only on Meta/GA4/WordPress. No campaign changes, no budget changes, regardless of what the data shows — recommend, don't act.
+- Numbers must reconcile with their sources; if Meta and GA4 disagree, show both and explain why (usually the on-platform-leads quirk).
+- No invented benchmarks — compare only against this account's own history.
